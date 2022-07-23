@@ -1,0 +1,13 @@
+.zero-editor-wrapper{
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #fff5e2;
+  border-radius: 8px;
+  background: #fff;
+}
+.ProseMirror {
+  outline: 0;
+}
+.zero-editor-container p {
+  margin: 0;
+}
