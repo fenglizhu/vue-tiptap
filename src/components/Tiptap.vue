@@ -1,12 +1,16 @@
 <template>
 
 <div v-if="editor">
-  <button @click="editor.commands.toggleHeading({ level: 1 })"> heading 1</button>
-  <button @click="editor.commands.toggleHeading({ level: 2 })"> heading 2</button>
+  
+
+  <div class="menu"></div>
+  
+    <button @click="editor.commands.toggleHeading({ level: 1 })"> heading 1</button>
+  <!-- <button @click="editor.commands.toggleHeading({ level: 2 })"> heading 2</button>
   <button @click="editor.commands.toggleHeading({ level: 3 })"> heading 3</button>
   <button @click="editor.commands.toggleHeading({ level: 4 })"> heading 4</button>
   <button @click="editor.commands.toggleHeading({ level: 5 })"> heading 5</button>
-  <button @click="editor.commands.toggleHeading({ level: 6 })"> heading 6</button>
+  <button @click="editor.commands.toggleHeading({ level: 6 })"> heading 6</button> -->
 
   <div></div>
   
@@ -24,7 +28,7 @@
 
   <button @click="setLink">链接</button>
   <button @click="editor.commands.setColor('#ff0000')">文字颜色#ff0000</button>
-  <button @click="editor.commands.setColor('#000')">文字颜色默认</button>
+  <!-- <button @click="editor.commands.setColor('#000')">文字颜色默认</button> -->
   <button @click="editor.commands.toggleHighlight({ color: '#ffcc00' })">背景颜色</button>
 
   <div></div>
@@ -34,22 +38,27 @@
   <button @click="editor.commands.toggleTaskList()">待办列表</button>
 
   <div></div>
-  <button @click="editor.commands.setTextAlign('left')">左对齐</button>
+  <!-- <button @click="editor.commands.setTextAlign('left')">左对齐</button> -->
   <button @click="editor.commands.setTextAlign('center')">中对齐</button>
-  <button @click="editor.commands.setTextAlign('right')">右对齐</button>
+  <!-- <button @click="editor.commands.setTextAlign('right')">右对齐</button> -->
 
-  
-  
+  <bubble-menu :editor="editor" :tippy-options="{ duration: 1000 }" v-if="editor">
+    加粗
+  </bubble-menu>
 
+  <button v-for="item in extensions">
+    {{item.name}}
+  </button>
+  
 
   <editor-content :editor="editor" />
-
+  <!-- <button id="myButton">My Button</button> -->
 </div>
   
 </template>
 
 <script setup lang="ts">
-import { Editor, EditorContent } from '@tiptap/vue-3'
+import { Editor, EditorContent, BubbleMenu,VueRenderer } from '@tiptap/vue-3'
 import StarterKit from '@tiptap/starter-kit'
 import Underline from '@tiptap/extension-underline'
 import Link from '@tiptap/extension-link'
@@ -59,7 +68,7 @@ import TextStyle from '@tiptap/extension-text-style'
 import Color from '@tiptap/extension-color'
 
 // 背景颜色
-import Highlight from '../extensions/Highlight'
+import Background from '../extensions/background'
 
 // 待办
 import TaskList from '@tiptap/extension-task-list'
@@ -68,14 +77,15 @@ import TaskItem from '@tiptap/extension-task-item'
 // 对齐方式
 import TextAlign from '@tiptap/extension-text-align'
 
+// import BubbleMenu from '@tiptap/extension-bubble-menu'
+
+import tippy from 'tippy.js';
 
 
-import Bold from '../extensions/Bold'
-console.log(Bold);
 
-const menu = new Map([
+import { Bold } from '../extensions/bold'
 
-])
+
 
 const editor = new Editor({
   content: `<p>
@@ -84,6 +94,7 @@ const editor = new Editor({
   <p>
     Did you see that? That’s a Vue component. We are really living in the future.
   </p>`,
+  // 'bold', 'code', 'italic', 'strike'
   extensions: [
     StarterKit,
     Underline,
@@ -92,16 +103,28 @@ const editor = new Editor({
     }),
     TextStyle,
     Color,
-    Highlight.configure({ multicolor: true }),
+    Bold,
+    Background.configure({ multicolor: true }),
     TaskList,
     TaskItem.configure({
       nested: true,
     }),
     TextAlign.configure({
       types: ['heading', 'paragraph'],
-    })
+    }),
   ],
 })
+
+console.log(editor.options.extensions);
+
+const extensions = editor.options.extensions.filter(acc=> !acc.parent)
+console.log(extensions);
+
+
+// tippy('#myButton', {
+//   content: "I'm a Tippy tooltip!",
+//   theme: 'light',
+// });
 
 const setLink = () => {
   editor.chain()
