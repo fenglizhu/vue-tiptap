@@ -1,7 +1,4 @@
 <script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-// import Tiptap from './components/Tiptap.vue'
 import ZeroTiptap from './components/ZeroTiptap.vue'
 import StarterKit from '@tiptap/starter-kit'
 import { Bold } from './extensions'
@@ -18,8 +15,6 @@ const extensions = [
 </script>
 
 <template>
-  
-  <!-- <tiptap /> -->
   <div style="width: 500px; margin: 10px auto">
     <ZeroTiptap :content="content" :extensions="extensions" />
   </div>
