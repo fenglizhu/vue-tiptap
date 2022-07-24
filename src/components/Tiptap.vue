@@ -68,7 +68,7 @@ import TextStyle from '@tiptap/extension-text-style'
 import Color from '@tiptap/extension-color'
 
 // 背景颜色
-import Background from '../extensions/background'
+import {Highlight} from '../extensions/highlight'
 
 // 待办
 import TaskList from '@tiptap/extension-task-list'
@@ -104,7 +104,7 @@ const editor = new Editor({
     TextStyle,
     Color,
     Bold,
-    Background.configure({ multicolor: true }),
+    Highlight,
     TaskList,
     TaskItem.configure({
       nested: true,

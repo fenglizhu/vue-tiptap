@@ -3,8 +3,8 @@
     <menu-button 
       v-for="item in menus" :key="item.id"
       :name="item.name" 
-      :editor="editor" 
-      :commandName="commandsName.get(item.name)"
+      :editor="editor"
+      :extension="item"
     >
     </menu-button>
   </div>
@@ -12,7 +12,6 @@
 
 <script lang="ts">
 import MenuButton from "./MenuButton.vue"
-import { commandsName } from "../../utils/commands_name";
 
 export default {
   props: {
@@ -29,8 +28,7 @@ export default {
     };
     
     return {
-      onClick,
-      commandsName
+      onClick
     };
   }
 }

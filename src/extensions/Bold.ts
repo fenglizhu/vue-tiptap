@@ -38,7 +38,6 @@ export const Bold = Mark.create({
     }
   },
   
-
   parseHTML() {
     return [
       {
@@ -46,11 +45,11 @@ export const Bold = Mark.create({
       },
       {
         tag: 'b',
-        getAttrs: node => (node as HTMLElement).style.fontWeight !== 'normal' && null,
+        getAttrs: (node: HTMLElement) => (node as HTMLElement).style.fontWeight !== 'normal' && null,
       },
       {
         style: 'font-weight',
-        getAttrs: value => /^(bold(er)?|[5-9]\d{2,})$/.test(value as string) && null,
+        getAttrs: (value: string) => /^(bold(er)?|[5-9]\d{2,})$/.test(value as string) && null,
       },
     ]
   },
@@ -104,5 +103,9 @@ export const Bold = Mark.create({
         type: this.type,
       }),
     ]
+  },
+
+  useCommands(){
+    return 'toggleBold'
   },
 })

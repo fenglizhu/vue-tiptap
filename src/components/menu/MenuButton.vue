@@ -1,8 +1,12 @@
 <template>
   <div 
-    :class="{ 'is-active': editor.isActive(name) }"
+    :class="['editor-menu-item', { 'is-active': editor.isActive(name) }]"
     @click="onClick()">
-    {{name}}
+    <div>{{name}}</div>
+    <!-- v-if="extension.config.hasTable" -->
+    <div  class="editor-menu-tab">
+      <button @click="tableClick('red')">红色</button>
+    </div>
   </div>
 </template>
 
@@ -18,16 +22,24 @@ export default {
       type: [String, undefined],
       default: ''
     },
-    editor: {
-      
-    }
+    editor: {},
+    extension: {}
   },
   setup(props: any) {
+    const useCommands = props.extension.config.useCommands;
+    const commandName = useCommands && useCommands()
     const onClick = () => {
-      props.editor.commands[props.commandName]()
+      props.editor.commands[commandName]()
+    }
+    const tableClick = (color: string) => {
+      // console.log(commandName);
+      
+      props.editor.commands[commandName](color)
+      // props.editor.commands.setColor(color)
     }
     return {
-      onClick
+      onClick,
+      tableClick
     }
   },
 }
