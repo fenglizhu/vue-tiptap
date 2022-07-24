@@ -27,8 +27,7 @@
   })
 
   const menus: Array<Object> = editor.options.extensions.filter(m => {
-    return m
-    // return m.name !== 'textStyle' && m.name !== 'starterKit'
+    return m.name !== 'textStyle' && m.name !== 'starterKit'
   })
 
   console.log(menus);

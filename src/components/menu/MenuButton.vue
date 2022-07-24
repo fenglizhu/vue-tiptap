@@ -1,10 +1,8 @@
 <template>
   <div 
-    :class="['editor-menu-item', { 'is-active': editor.isActive(name) }]"
-    @click="onClick()">
-    <div>{{name}}</div>
-    <!-- v-if="extension.config.hasTable" -->
-    <div  class="editor-menu-tab">
+    :class="['editor-menu-item', { 'is-active': editor.isActive(name) }]">
+    <div @click="onClick()">{{name}}</div>
+    <div v-if="extension.config.hasTab">
       <button @click="tableClick('red')">红色</button>
     </div>
   </div>
@@ -26,16 +24,16 @@ export default {
     extension: {}
   },
   setup(props: any) {
-    const useCommands = props.extension.config.useCommands;
-    const commandName = useCommands && useCommands()
+    const {useCommands , hasTab } = props.extension.config;
+    const commandName = useCommands && useCommands();
+
     const onClick = () => {
-      props.editor.commands[commandName]()
+      if (!hasTab) {
+        props.editor.commands[commandName]()
+      }
     }
     const tableClick = (color: string) => {
-      // console.log(commandName);
-      
       props.editor.commands[commandName](color)
-      // props.editor.commands.setColor(color)
     }
     return {
       onClick,

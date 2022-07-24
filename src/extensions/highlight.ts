@@ -1,3 +1,4 @@
+
 import { Extension } from '@tiptap/core'
 
 export type ColorOptions = {
@@ -23,7 +24,7 @@ declare module '@tiptap/core' {
 
 export const Highlight = Extension.create<ColorOptions>({
   name: 'highlight',
-
+  hasTab: true,
   addOptions() {
     return {
       types: ['textStyle'],
@@ -68,7 +69,7 @@ export const Highlight = Extension.create<ColorOptions>({
       },
       toggleHighlight: (color) => ({ chain }) => {
         return chain()
-          .toggleMark('textStyle', { color: color })
+          .toggleMark('textStyle', { color })
           .run()
       }
     }
