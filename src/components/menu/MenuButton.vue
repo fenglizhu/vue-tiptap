@@ -3,7 +3,7 @@
     :class="['editor-menu-item', { 'is-active': editor.isActive(name) }]">
     <div @click="onClick()">{{name}}</div>
     <div v-if="extension.config.hasTab">
-      <button v-if="extension.config.paramsObject" @click="tableClick({color: 'red'})">红色4</button>
+      <button v-if="extension.config.paramsObject" @click="tableClick({color: 'green'})">红色4</button>
       
       <button v-else @click="tableClick('red')">红色</button>
     </div>
@@ -22,19 +22,16 @@ export default {
     extension: {}
   },
   setup(props: any) {
-    const {toggleCommands , hasTab, getParameterType = null } = props.extension.config;
+    const {toggleCommands , hasTab } = props.extension.config;
     const commandName = toggleCommands && toggleCommands();
-    const paramType = getParameterType && getParameterType();
 
     const onClick = () => {
       if (!hasTab) {
         props.editor.commands[commandName]()
       }
     }
-    const tableClick = (arg: any) => {
-      console.log(arg);
-      
-      props.editor.commands[commandName](arg)
+    const tableClick = (params: any) => {
+      props.editor.commands[commandName](params)
     }
     return {
       onClick,
