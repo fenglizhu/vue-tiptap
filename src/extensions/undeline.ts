@@ -1,8 +1,8 @@
 import{ Underline as TiptapUndeline }from '@tiptap/extension-underline'
 
-export class Undeline {
+export default class Undeline {
   constructor() {
-    TiptapUndeline.config.useCommands = () => {
+    TiptapUndeline.config.toggleCommands = () => {
       return 'toggleUnderline'
     }
     return TiptapUndeline

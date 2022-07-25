@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import ZeroTiptap from './components/ZeroTiptap.vue'
-import { Bold, Highlight, TextStyle, Undeline } from './extensions'
+import { 
+  Bold, Highlight, TextStyle, Undeline, Italic, Strike,
+  Blockquote,
+  CodeBlock,
+  Color
+} from './extensions'
 // import Tiptap from './components/Tiptap.vue';
 
 const content = `<p>
@@ -13,7 +18,12 @@ const extensions = [
   new Bold(),
   new Highlight(),
   new TextStyle(),
-  new Undeline()
+  new Undeline(),
+  new Italic(),
+  new Strike(),
+  new Blockquote(),
+  new CodeBlock(),
+  new Color()
 ]
 </script>
 

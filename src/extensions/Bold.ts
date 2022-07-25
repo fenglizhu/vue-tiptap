@@ -1,10 +1,10 @@
-import{ Bold as Tiptapbold }from '@tiptap/extension-bold'
+import{ Bold as TiptapBold }from '@tiptap/extension-bold'
 
-export class Bold {
+export default class Bold {
   constructor() {
-    Tiptapbold.config.useCommands = () => {
+    TiptapBold.config.toggleCommands = () => {
       return 'toggleBold'
     }
-    return Tiptapbold
+    return TiptapBold
   }
 }

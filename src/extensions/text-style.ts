@@ -1,6 +1,6 @@
 import {TextStyle as TiptapTextStyle} from '@tiptap/extension-text-style'
 
-export class TextStyle {
+export default class TextStyle {
   constructor() {
     return TiptapTextStyle
   }
