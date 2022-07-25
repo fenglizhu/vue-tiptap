@@ -11,6 +11,7 @@
   import { defineProps } from "vue";
   import { Editor, EditorContent } from '@tiptap/vue-3'
   import MenuBar from "./menu/MenuBar.vue";
+  import StarterKit from '@tiptap/starter-kit'
 
   const props = defineProps({
     content: {
@@ -23,7 +24,7 @@
   })
   const editor = new Editor({
     content: props.content,
-    extensions: props.extensions
+    extensions: [StarterKit].concat(props.extensions)
   })
   console.log(editor.options.extensions);
   

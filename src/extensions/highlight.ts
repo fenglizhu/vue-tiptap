@@ -22,7 +22,7 @@ declare module '@tiptap/core' {
   }
 }
 
-export const Highlight = Extension.create<ColorOptions>({
+export const HighlightExtension = Extension.create<ColorOptions>({
   name: 'highlight',
   hasTab: true,
   addOptions() {
@@ -73,9 +73,14 @@ export const Highlight = Extension.create<ColorOptions>({
           .run()
       }
     }
-  },
-
-  useCommands(){
-    return 'toggleHighlight'
-  },
+  }
 })
+
+export class Highlight {
+  constructor() {
+    HighlightExtension.config.useCommands = () => {
+      return 'toggleHighlight'
+    }
+    return HighlightExtension
+  }
+}

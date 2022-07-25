@@ -16,10 +16,6 @@ export default {
       type: String,
       default: ''
     },
-    commandName: {
-      type: [String, undefined],
-      default: ''
-    },
     editor: {},
     extension: {}
   },
