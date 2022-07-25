@@ -25,7 +25,8 @@
     content: props.content,
     extensions: props.extensions
   })
-
+  console.log(editor.options.extensions);
+  
   const menus: Array<Object> = editor.options.extensions.filter(m => {
     return m.name !== 'textStyle' && m.name !== 'starterKit'
   })

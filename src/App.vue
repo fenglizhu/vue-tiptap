@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import ZeroTiptap from './components/ZeroTiptap.vue'
 import StarterKit from '@tiptap/starter-kit'
-import { Bold, Highlight, TextStyle } from './extensions'
+import { Bold, Highlight, TextStyle, Undeline } from './extensions'
 import Tiptap from './components/Tiptap.vue';
+
 const content = `<p>
     This is still the text editor you’re used to, but enriched with node views.
   </p>
@@ -12,8 +13,9 @@ const content = `<p>
 const extensions = [
   StarterKit,
   Bold,
-  Highlight,
-  TextStyle
+  Highlight.configure({}),
+  TextStyle,
+  new Undeline()
 ]
 </script>
 
@@ -21,7 +23,7 @@ const extensions = [
   <div style="width: 500px; margin: 10px auto">
     <ZeroTiptap :content="content" :extensions="extensions" />
   </div>
-  <Tiptap></Tiptap>
+  <!-- <Tiptap></Tiptap> -->
   
 </template>
 
