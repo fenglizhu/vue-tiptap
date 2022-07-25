@@ -68,7 +68,7 @@ import TextStyle from '@tiptap/extension-text-style'
 import Color from '@tiptap/extension-color'
 
 // 背景颜色
-import {Highlight} from '../extensions/highlight'
+// import {Highlight} from '../extensions/highlight'
 
 // 待办
 import TaskList from '@tiptap/extension-task-list'
@@ -83,7 +83,7 @@ import tippy from 'tippy.js';
 
 
 
-import { Bold } from '../extensions/bold'
+// import { Bold } from '../extensions/bold'
 
 
 
@@ -103,8 +103,8 @@ const editor = new Editor({
     }),
     TextStyle,
     Color,
-    Bold,
-    Highlight,
+    // Bold,
+    // Highlight,
     TaskList,
     TaskItem.configure({
       nested: true,

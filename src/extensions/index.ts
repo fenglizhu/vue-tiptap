@@ -16,4 +16,7 @@ export { default as Strike } from './strike';
 export { default as Blockquote } from './block-quote';
 export { default as CodeBlock } from './code-block';
 export { default as Color } from './color';
+export { default as Heading } from './heading';
+export { default as TextAlign } from './text-align';
+
 

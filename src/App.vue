@@ -4,9 +4,11 @@ import {
   Bold, Highlight, TextStyle, Undeline, Italic, Strike,
   Blockquote,
   CodeBlock,
-  Color
+  Color,
+  Heading,
+  TextAlign
 } from './extensions'
-// import Tiptap from './components/Tiptap.vue';
+import Tiptap from './components/Tiptap.vue';
 
 const content = `<p>
     This is still the text editor you’re used to, but enriched with node views.
@@ -23,7 +25,11 @@ const extensions = [
   new Strike(),
   new Blockquote(),
   new CodeBlock(),
-  new Color()
+  new Color(),
+  new Heading(),
+  new TextAlign({
+    alignments: ['left', 'center', 'right', 'justify']
+  })
 ]
 </script>
 
@@ -31,7 +37,7 @@ const extensions = [
   <div style="width: 500px; margin: 10px auto">
     <ZeroTiptap :content="content" :extensions="extensions" />
   </div>
-  <!-- <Tiptap></Tiptap> -->
+  <Tiptap></Tiptap>
   
 </template>
 

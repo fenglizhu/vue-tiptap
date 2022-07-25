@@ -11,7 +11,7 @@
 .zero-editor-container p {
   margin: 0;
 }
-/* .editor-menu-item{
+.editor-menu-item{
   position: relative;
 }
 .editor-menu-tab{
@@ -21,4 +21,4 @@
 
 .editor-menu-item:hover .editor-menu-tab{
   display: block;
-} */
+}

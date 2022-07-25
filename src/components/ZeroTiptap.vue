@@ -19,12 +19,14 @@
       default: ''
     },
     extensions: {
+      type: [Array],
       default: () => []
     }
   })
+  const extensions:any[] = props.extensions
   const editor = new Editor({
     content: props.content,
-    extensions: [StarterKit].concat(props.extensions)
+    extensions: [StarterKit].concat(extensions)
   })
   
   const menus: Array<Object> = editor.options.extensions.filter(m => {
