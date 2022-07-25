@@ -33,7 +33,7 @@ export const pasteRegex = /(?:^|\s)((?:==)((?:[^~=]+))(?:==))/g
 const TiptapHighlight = Mark.create<HighlightOptions>({
   name: 'highlight',
   hasTab: true,
-  paramsObject: true,
+  paramsKey: 'color',
   addOptions() {
     return {
       HTMLAttributes: {},

@@ -6,6 +6,7 @@ for (let key in context) {
 }
 console.log(module);
 
+
 export { default as Bold } from './bold';
 export { default as Highlight } from './highlight';
 export { default as TextStyle } from './text-style';

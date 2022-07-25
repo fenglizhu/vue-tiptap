@@ -3,7 +3,8 @@
     :class="['editor-menu-item', { 'is-active': editor.isActive(name) }]">
     <div @click="onClick()">{{name}}</div>
     <div v-if="extension.config.hasTab">
-      <button v-if="extension.config.paramsObject" @click="tableClick({color: 'green'})">红色4</button>
+      <button v-if="extension.config.paramsKey" @click="tableClick({[extension.config.paramsKey]: 'green'})">红色4</button>
+      <button v-if="extension.config.paramsKey" @click="tableClick({[extension.config.paramsKey]: 'blue'})">lanse4</button>
       
       <button v-else @click="tableClick('red')">红色</button>
     </div>
