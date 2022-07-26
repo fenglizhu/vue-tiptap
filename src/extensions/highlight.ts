@@ -17,6 +17,7 @@ export default class Highlight {
       },
     })
     const customOptions: CoustomOptions = {
+      showMenu: true,
       toggleCommands({
         attribute
       }: Commands) {

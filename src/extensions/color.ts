@@ -6,6 +6,7 @@ export default class Color {
     const ZeroHeading:any = TiptapColor.extend()
     const paramsKey = 'color'
     const customOptions: CoustomOptions = {
+      showMenu: true,
       toggleCommands({
         attribute
       }: Commands) {

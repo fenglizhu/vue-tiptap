@@ -5,6 +5,7 @@ export default class CodeBlock {
   constructor() {
     const ZeroCodeBlock:any = TiptapCodeBlock.extend()
     const customOptions: CoustomOptions = {
+      showMenu: true,
       toggleCommands({
         attribute
       }: Commands) {

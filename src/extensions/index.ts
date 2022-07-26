@@ -1,12 +1,13 @@
-const context: any = import.meta.glob("./*.ts", { eager: true });
-const module: Record<string, any> = {};
+// const context: any = import.meta.glob("./*.ts", { eager: true });
+// const module: Record<string, any> = {};
 
-for (let key in context) {
-  module[context[key].default.name] = context[key].default;
-}
-console.log(module);
+// for (let key in context) {
+//   module[context[key].default.name] = context[key].default;
+// }
+// console.log(module);
 
 
+export { default as StarterKit } from './starter-kit';
 export { default as Bold } from './bold';
 export { default as Highlight } from './highlight';
 export { default as TextStyle } from './text-style';
@@ -18,5 +19,12 @@ export { default as CodeBlock } from './code-block';
 export { default as Color } from './color';
 export { default as Heading } from './heading';
 export { default as TextAlign } from './text-align';
+export { default as OrderedList } from './ordered-list';
+export { default as BulletList } from './bullet-list';
+export { default as TaskList } from './task-list';
+export { default as TaskItem } from './task-item';
+
+
+
 
 

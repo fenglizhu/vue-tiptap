@@ -5,6 +5,7 @@ export default class Strike {
   constructor() {
     const ZeroUnderline: any = TiptapStrike.extend()
     const customOptions: CoustomOptions = {
+      showMenu: true,
       toggleCommands({
         attribute
       }: Commands) {

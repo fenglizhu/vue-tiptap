@@ -25,6 +25,7 @@ export default class TextAlign {
       }
     })
     const customOptions: CoustomOptions = {
+      showMenu: true,
       collapse,
       toggleCommands({
         attribute

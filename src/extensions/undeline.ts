@@ -4,6 +4,7 @@ export default class Undeline {
   constructor() {
     const ZeroUnderline: any = TiptapUndeline.extend()
     const customOptions: CoustomOptions = {
+      showMenu: true,
       toggleCommands({
         attribute
       }: Commands) {

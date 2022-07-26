@@ -11,7 +11,7 @@
   import { defineProps } from "vue";
   import { Editor, EditorContent } from '@tiptap/vue-3'
   import MenuBar from "./menu/MenuBar.vue";
-  import StarterKit from '@tiptap/starter-kit'
+  import { StarterKit } from '../extensions'
 
   const props = defineProps({
     content: {
@@ -19,18 +19,18 @@
       default: ''
     },
     extensions: {
-      type: [Array],
+      type: Array,
       default: () => []
     }
   })
-  const extensions:any[] = props.extensions
+  const extensions: any[] = props.extensions
   const editor = new Editor({
     content: props.content,
-    extensions: [StarterKit].concat(extensions)
+    extensions: extensions
   })
   
   const menus: Array<Object> = editor.options.extensions.filter(m => {
-    return m.name !== 'textStyle' && m.name !== 'starterKit'
+    return m.customOptions.showMenu
   })
 
   console.log(menus);

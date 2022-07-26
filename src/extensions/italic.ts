@@ -4,6 +4,7 @@ export default class Italic {
   constructor() {
     const ZeroItalic: any = TiptapItalic.extend()
     const customOptions: CoustomOptions = {
+      showMenu: true,
       toggleCommands({
         attribute
       }: Commands) {

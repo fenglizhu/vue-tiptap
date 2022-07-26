@@ -1,14 +1,19 @@
 <script setup lang="ts">
 import ZeroTiptap from './components/ZeroTiptap.vue'
 import { 
+  StarterKit,
   Bold, Highlight, TextStyle, Undeline, Italic, Strike,
   Blockquote,
   CodeBlock,
   Color,
   Heading,
-  TextAlign
+  TextAlign,
+  OrderedList,
+  BulletList,
+  TaskList,
+  TaskItem
 } from './extensions'
-import Tiptap from './components/Tiptap.vue';
+// import Tiptap from './components/Tiptap.vue';
 
 const content = `<p>
     This is still the text editor you’re used to, but enriched with node views.
@@ -17,6 +22,7 @@ const content = `<p>
     Did you see that? That’s a Vue component. We are really living in the future.
   </p>`;
 const extensions = [
+  new StarterKit(),
   new Bold(),
   new Highlight(),
   new TextStyle(),
@@ -29,7 +35,11 @@ const extensions = [
   new Heading(),
   new TextAlign({
     alignments: ['left', 'center']
-  })
+  }),
+  new OrderedList(),
+  new BulletList(),
+  new TaskList(),
+  new TaskItem()
 ]
 </script>
 
@@ -37,7 +47,7 @@ const extensions = [
   <div style="width: 500px; margin: 10px auto">
     <ZeroTiptap :content="content" :extensions="extensions" />
   </div>
-  <Tiptap></Tiptap>
+  <!-- <Tiptap></Tiptap> -->
   
 </template>
 

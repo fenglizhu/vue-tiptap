@@ -5,6 +5,7 @@ export default class Heading {
   constructor() {
     const ZeroHeading:any = TiptapHeading.extend()
     const customOptions: CoustomOptions = {
+      showMenu: true,
       toggleCommands({
         attribute
       }: Commands) {
