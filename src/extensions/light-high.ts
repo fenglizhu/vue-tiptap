@@ -30,7 +30,7 @@ const LineHeightExtension = Extension.create({
     return {
       types: ['heading', 'paragraph'],
       alignments: [1, 1.15, 1.5, 2.0, 2.5, 3],
-      defaultAlignment: 1,
+      defaultAlignment: 1.5,
     }
   },
   addGlobalAttributes() {
