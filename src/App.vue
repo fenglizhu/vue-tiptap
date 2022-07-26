@@ -11,7 +11,8 @@ import {
   OrderedList,
   BulletList,
   TaskList,
-  TaskItem
+  TaskItem,
+  LineHeight
 } from './extensions'
 // import Tiptap from './components/Tiptap.vue';
 
@@ -39,7 +40,8 @@ const extensions = [
   new OrderedList(),
   new BulletList(),
   new TaskList(),
-  new TaskItem()
+  new TaskItem(),
+  new LineHeight()
 ]
 </script>
 

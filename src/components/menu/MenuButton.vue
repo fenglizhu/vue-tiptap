@@ -13,10 +13,13 @@
       <button v-if="extension.config.paramsKey" @click="tableClick({[extension.config.paramsKey]: 'red'})">红色背景和文本</button>
 
     </div>
+
+    <!-- 文本对齐和行高 -->
     <div  v-if="extension.options.alignments">
       <button v-for="item in extension.options.alignments" @click="onClick(item)" :key="item">
         {{item}}
       </button>
+      <button @click="onClick('')">默认行高</button>
     </div>
   </div>
 </template>
@@ -33,25 +36,26 @@ export default {
     extension: {}
   },
   setup(props: any) {
-    const {toggleCommands , hasTab = false } = props.extension.config;
-    const commandName = toggleCommands && toggleCommands();
+    const {hasTab = false } = props.extension.config;
     const onClick = (text:string) => {
       if (!hasTab) {
-        // props.editor.commands[commandName](text)
+        console.log( {
+          attribute: text
+        });
+        
         props.extension.customOptions.toggleCommands.call(props.editor, {
           attribute: text
         })
       }
     }
+    console.log(props.extension.options.alignments);
+    
     const tableClick = (params: any) => {
-      console.log(params);
-      
-      // props.editor.commands[commandName](params)
+       console.log(params);
       props.extension.customOptions.toggleCommands.call(props.editor, {
         attribute: params
       })
     }
-    console.log(props.editor);
     
     return {
       onClick,

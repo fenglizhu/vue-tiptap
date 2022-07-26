@@ -23,6 +23,7 @@ export { default as OrderedList } from './ordered-list';
 export { default as BulletList } from './bullet-list';
 export { default as TaskList } from './task-list';
 export { default as TaskItem } from './task-item';
+export { default as LineHeight } from './light-high';
 
 
 

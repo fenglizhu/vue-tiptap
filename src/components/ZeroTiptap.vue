@@ -29,7 +29,7 @@
     extensions: extensions
   })
   
-  const menus: Array<Object> = editor.options.extensions.filter(m => {
+  const menus: Array<Object> = editor.options.extensions.filter((m: any) => {
     return m.customOptions.showMenu
   })
 

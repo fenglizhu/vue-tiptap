@@ -4,8 +4,8 @@ import{ TextAlign as TiptapTextAlign }from '@tiptap/extension-text-align'
 interface TextAlignOptions {
   types?: string[],
   alignments?: string[],
+  defaultAlignment?: string,
   collapse?: Boolean, // 是否需要折叠
-  defaultAlignment?: string
 }
 
 export default class TextAlign {
@@ -14,7 +14,7 @@ export default class TextAlign {
     alignments = ['left', 'center', 'right', 'justify'],
     collapse = false,
     defaultAlignment = 'left',
-  }: TextAlignOptions) {
+  }: TextAlignOptions = {}) {
     const ZeroTextAlign: any = TiptapTextAlign.extend({
       addOptions() {
         return {
