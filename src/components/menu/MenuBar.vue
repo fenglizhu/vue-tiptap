@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="zero-editor-menu">
     <menu-button 
       v-for="item in menus" :key="item.id"
       :name="item.name" 

@@ -2,7 +2,7 @@
   <div 
     :class="['editor-menu-item', { 'is-active': editor.isActive(name) }]">
     <div @click="onClick()">{{name}}</div>
-    <div v-if="extension.config.hasTab">
+    <div v-if="extension.config.hasTab" class="editor-menu-tab">
       <!-- 背景色 -->
       <button v-if="extension.config.paramsKey" @click="tableClick({[extension.config.paramsKey]: 'green'})">绿色背景和文本</button>
 
@@ -15,7 +15,7 @@
     </div>
 
     <!-- 文本对齐和行高 -->
-    <div  v-if="extension.options.alignments">
+    <div  v-if="extension.options.alignments"  class="editor-menu-tab">
       <button v-for="item in extension.options.alignments" @click="onClick(item)" :key="item">
         {{item}}
       </button>

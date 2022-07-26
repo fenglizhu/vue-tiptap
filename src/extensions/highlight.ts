@@ -3,8 +3,16 @@ import { mergeAttributes } from '@tiptap/core'
 import { Highlight as TiptapHighlight } from "@tiptap/extension-highlight";
 import { CoustomOptions, Commands } from '../types'
 
+interface Colors {
+  color: string[],
+  showMoreColor: boolean
+}
+
 export default class Highlight {
-  constructor() {
+  constructor({ color, showMoreColor }: Colors = {
+    color: [],
+    showMoreColor: true
+  }) {
     const ZeroHighlight:any = TiptapHighlight.extend({
       addOptions() {
         return {
@@ -22,7 +30,9 @@ export default class Highlight {
         attribute
       }: Commands) {
         this.commands.toggleHighlight(attribute);
-      }
+      },
+      showMoreColor,
+      tabOptions: color
     }
     ZeroHighlight.config.hasTab = true;
     ZeroHighlight.config.paramsKey = 'color';
