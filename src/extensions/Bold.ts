@@ -1,10 +1,18 @@
 import{ Bold as TiptapBold }from '@tiptap/extension-bold'
+import { CoustomOptions, Commands } from '../types'
 
-export default class Bold {
+export default class CodeBlock {
   constructor() {
-    TiptapBold.config.toggleCommands = () => {
-      return 'toggleBold'
+    const ZeroBold:any = TiptapBold.extend()
+    const customOptions: CoustomOptions = {
+      toggleCommands({
+        attribute
+      }: Commands) {
+        this.commands.toggleBold(attribute);
+      }
     }
-    return TiptapBold
+    ZeroBold.customOptions = customOptions;
+
+    return ZeroBold
   }
 }

@@ -4,15 +4,14 @@
     <div @click="onClick()">{{name}}</div>
     <div v-if="extension.config.hasTab">
       <!-- 背景色 -->
-      <button v-if="extension.config.paramsKey" @click="tableClick({[extension.config.paramsKey]: 'green'})">红色4</button>
+      <button v-if="extension.config.paramsKey" @click="tableClick({[extension.config.paramsKey]: 'green'})">绿色背景和文本</button>
 
       <!-- 标题 -->
-      <button v-if="extension.config.paramsKey" @click="tableClick({[extension.config.paramsKey]: 3})">lanse4</button>
+      <button v-if="extension.config.paramsKey" @click="tableClick({[extension.config.paramsKey]: 3})">标题3</button>
       
       <!-- 字体颜色 -->
-      <button v-else @click="tableClick('red')">红色</button>
+      <button v-if="extension.config.paramsKey" @click="tableClick({[extension.config.paramsKey]: 'red'})">红色背景和文本</button>
 
-      
     </div>
     <div  v-if="extension.options.alignments">
       <button v-for="item in extension.options.alignments" @click="onClick(item)" :key="item">
@@ -48,8 +47,8 @@ export default {
       console.log(params);
       
       // props.editor.commands[commandName](params)
-      props.extension.customOptions.toggleCommands({
-        editor: props.editor
+      props.extension.customOptions.toggleCommands.call(props.editor, {
+        attribute: params
       })
     }
     console.log(props.editor);

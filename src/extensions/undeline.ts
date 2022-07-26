@@ -1,10 +1,17 @@
+import { CoustomOptions, Commands } from '../types'
 import{ Underline as TiptapUndeline }from '@tiptap/extension-underline'
-
 export default class Undeline {
   constructor() {
-    TiptapUndeline.config.toggleCommands = () => {
-      return 'toggleUnderline'
+    const ZeroUnderline: any = TiptapUndeline.extend()
+    const customOptions: CoustomOptions = {
+      toggleCommands({
+        attribute
+      }: Commands) {
+        this.commands.toggleUnderline(attribute);
+      }
     }
-    return TiptapUndeline
+    ZeroUnderline.customOptions = customOptions;
+
+    return ZeroUnderline
   }
 }

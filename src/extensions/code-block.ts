@@ -1,10 +1,18 @@
 import{ CodeBlock as TiptapCodeBlock }from '@tiptap/extension-code-block'
+import { CoustomOptions, Commands } from '../types'
 
 export default class CodeBlock {
   constructor() {
-    TiptapCodeBlock.config.toggleCommands = () => {
-      return 'toggleCodeBlock'
+    const ZeroCodeBlock:any = TiptapCodeBlock.extend()
+    const customOptions: CoustomOptions = {
+      toggleCommands({
+        attribute
+      }: Commands) {
+        this.commands.toggleCodeBlock(attribute);
+      }
     }
-    return TiptapCodeBlock
+    ZeroCodeBlock.customOptions = customOptions;
+
+    return ZeroCodeBlock
   }
 }

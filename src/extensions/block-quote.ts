@@ -1,10 +1,18 @@
 import{ Blockquote as TiptapBlockquote }from '@tiptap/extension-blockquote'
+import { CoustomOptions, Commands } from '../types'
 
-export default class Blockquote {
+export default class CodeBlock {
   constructor() {
-    TiptapBlockquote.config.toggleCommands = () => {
-      return 'toggleBlockquote'
+    const ZeroBlockquote:any = TiptapBlockquote.extend()
+    const customOptions: CoustomOptions = {
+      toggleCommands({
+        attribute
+      }: Commands) {
+        this.commands.toggleBlockquote(attribute);
+      }
     }
-    return TiptapBlockquote
+    ZeroBlockquote.customOptions = customOptions;
+
+    return ZeroBlockquote
   }
 }

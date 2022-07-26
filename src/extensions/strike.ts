@@ -1,10 +1,18 @@
 import{ Strike as TiptapStrike }from '@tiptap/extension-strike'
+import { CoustomOptions, Commands } from '../types'
 
 export default class Strike {
   constructor() {
-    TiptapStrike.config.toggleCommands = () => {
-      return 'toggleStrike'
+    const ZeroUnderline: any = TiptapStrike.extend()
+    const customOptions: CoustomOptions = {
+      toggleCommands({
+        attribute
+      }: Commands) {
+        this.commands.toggleStrike(attribute);
+      }
     }
-    return TiptapStrike
+    ZeroUnderline.customOptions = customOptions;
+    
+    return ZeroUnderline
   }
 }

@@ -1,12 +1,21 @@
 import{ Heading as TiptapHeading }from '@tiptap/extension-heading'
+import { CoustomOptions, Commands } from '../types'
 
-export default class Color {
+export default class Heading {
   constructor() {
-    TiptapHeading.config.hasTab = true;
-    TiptapHeading.config.paramsKey = 'level',
-    TiptapHeading.config.toggleCommands = () => {
-      return 'toggleHeading'
+    const ZeroHeading:any = TiptapHeading.extend()
+    const customOptions: CoustomOptions = {
+      toggleCommands({
+        attribute
+      }: Commands) {
+        this.commands.toggleHeading(attribute);
+      }
     }
-    return TiptapHeading
+    ZeroHeading.config.hasTab = true;
+    ZeroHeading.config.paramsKey = 'level';
+    
+    ZeroHeading.customOptions = customOptions;
+
+    return ZeroHeading
   }
 }

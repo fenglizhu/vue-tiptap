@@ -1,4 +1,4 @@
-import { CoustomOptions } from '../types/coustom-options'
+import { CoustomOptions, Commands } from '../types'
 import{ TextAlign as TiptapTextAlign }from '@tiptap/extension-text-align'
 
 interface TextAlignOptions {
@@ -6,10 +6,6 @@ interface TextAlignOptions {
   alignments?: string[],
   collapse?: Boolean, // 是否需要折叠
   defaultAlignment?: string
-}
-
-interface Commands {
-  attribute: any
 }
 
 export default class TextAlign {
