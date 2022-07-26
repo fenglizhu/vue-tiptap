@@ -28,7 +28,7 @@ const extensions = [
   new Color(),
   new Heading(),
   new TextAlign({
-    alignments: ['left', 'center', 'right', 'justify']
+    alignments: ['left', 'center']
   })
 ]
 </script>

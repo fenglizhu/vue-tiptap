@@ -15,7 +15,7 @@
       
     </div>
     <div  v-if="extension.options.alignments">
-      <button v-for="item in extension.options.alignments" @click="onClick(item)">
+      <button v-for="item in extension.options.alignments" @click="onClick(item)" :key="item">
         {{item}}
       </button>
     </div>
@@ -38,12 +38,22 @@ export default {
     const commandName = toggleCommands && toggleCommands();
     const onClick = (text:string) => {
       if (!hasTab) {
-        props.editor.commands[commandName](text)
+        // props.editor.commands[commandName](text)
+        props.extension.customOptions.toggleCommands.call(props.editor, {
+          attribute: text
+        })
       }
     }
     const tableClick = (params: any) => {
-      props.editor.commands[commandName](params)
+      console.log(params);
+      
+      // props.editor.commands[commandName](params)
+      props.extension.customOptions.toggleCommands({
+        editor: props.editor
+      })
     }
+    console.log(props.editor);
+    
     return {
       onClick,
       tableClick
