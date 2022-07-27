@@ -14,7 +14,7 @@ import {
   TaskItem,
   LineHeight
 } from './extensions'
-// import Tiptap from './components/Tiptap.vue';
+import Tiptap from './components/Tiptap.vue';
 
 const content = `<p>
     This is still the text editor you’re used to, but enriched with node views.
@@ -49,7 +49,7 @@ const extensions = [
   <div style="width: 500px; margin: 10px auto">
     <ZeroTiptap :content="content" :extensions="extensions" />
   </div>
-  <!-- <Tiptap></Tiptap> -->
+  <Tiptap></Tiptap>
   
 </template>
 

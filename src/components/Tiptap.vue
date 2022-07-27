@@ -58,7 +58,7 @@
 </template>
 
 <script setup lang="ts">
-import { Editor, EditorContent, BubbleMenu,VueRenderer } from '@tiptap/vue-3'
+import { Editor,EditorContent, BubbleMenu,VueRenderer } from '@tiptap/vue-3'
 import StarterKit from '@tiptap/starter-kit'
 import Underline from '@tiptap/extension-underline'
 import Link from '@tiptap/extension-link'
@@ -84,7 +84,6 @@ import tippy from 'tippy.js';
 
 
 // import { Bold } from '../extensions/bold'
-
 
 
 const editor = new Editor({

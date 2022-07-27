@@ -86,6 +86,7 @@ export default class LineHeight {
         }
       }
     })
+    
     const customOptions: CoustomOptions = {
       showMenu: true,
       collapse,

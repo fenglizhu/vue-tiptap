@@ -3,6 +3,7 @@ import { CoustomOptions, Commands } from '../types'
 
 export default class CodeBlock {
   constructor() {
+    
     const ZeroBlockquote:any = TiptapBlockquote.extend()
     const customOptions: CoustomOptions = {
       showMenu: true,
