@@ -1,20 +1,29 @@
 import { renderElement } from "./render-dom";
 
-const myElement = {
-  type: 'button',
-  props: {
-    type: 'button',
-    className: 'btn',
-    onClick: () => alert('Clicked'),
-    children: [{ props: { nodeValue: 'Click me' } }]
+interface Menuoption {
+  addcustomCommands?: Function,
+  toolTips: string
+}
+
+export class MenuButton {
+  constructor({
+    addcustomCommands,
+    toolTips
+  }: Menuoption) {
+    this.createButton(addcustomCommands, toolTips)
   }
-};
 
-renderElement(myElement, document.body);
-
-
-class MenuButton {
-  constructor() {
-
+  public createButton(addcustomCommands: Function | undefined, toolTips: string) {
+    const myElement = {
+      type: 'button',
+      props: {
+        type: 'button',
+        className: 'btn',
+        onClick: addcustomCommands,
+        children: [{ props: { nodeValue: toolTips } }]
+      }
+    };
+    
+    renderElement(myElement, document.body);
   }
 }

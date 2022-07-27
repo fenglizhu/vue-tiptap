@@ -21,7 +21,9 @@ export class ZeroEditor {
 
   private createMenuManager() {
     this.editor.menusOptions.forEach((menusItem: any) => {
+      
       menusItem['addcustomCommands'] = function() {
+        // TODO：没对应上每个扩展的事件
         this.editor.commands.toggleBold()
       }
       menusItem['addcustomCommands'] = menusItem['addcustomCommands'].bind({editor: this.editor})
@@ -37,7 +39,7 @@ export class ZeroEditor {
 
   get menus() {
     const menus: Array<Object> = this.editor.options.extensions.filter((m: any) => {
-      return m.customOptions.showMenu
+      return m.menusOptions.showMenu
     })
     return menus
   }
