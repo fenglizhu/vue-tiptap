@@ -1,17 +1,19 @@
 
 import { mergeAttributes } from '@tiptap/core'
 import { Highlight as TiptapHighlight } from "@tiptap/extension-highlight";
-import { CoustomOptions, Commands } from '../types'
+import { CoustomOptions, Commands, MenuOptions } from '../types'
 
-interface Colors {
+interface Colors extends MenuOptions{
   color: string[],
   showMoreColor: boolean
 }
 
 export default class Highlight {
-  constructor({ color, showMoreColor }: Colors = {
+  constructor(option: Colors = {
     color: [],
-    showMoreColor: true
+    showMoreColor: true,
+    showMenu: true,
+    toolTips: '背景色'
   }) {
     const ZeroHighlight:any = TiptapHighlight.extend({
       addOptions() {
@@ -25,19 +27,24 @@ export default class Highlight {
       },
     })
     const customOptions: CoustomOptions = {
-      showMenu: true,
       toggleCommands({
         attribute
       }: Commands) {
         this.commands.toggleHighlight(attribute);
       },
-      showMoreColor,
-      tabOptions: color
+      showMoreColor: option.showMoreColor,
+      tabOptions: option.color
     }
-    ZeroHighlight.config.hasTab = true;
-    ZeroHighlight.config.paramsKey = 'color';
-    
+
+    const menusOptions: MenuOptions = {
+      showMenu: option.showMenu,
+      toolTips: option.toolTips,
+      hasTab: true,
+      clickParamsKey: 'color'
+    }
+
     ZeroHighlight.customOptions = customOptions;
+    ZeroHighlight.menusOptions = menusOptions;
 
     return ZeroHighlight
   }

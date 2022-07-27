@@ -1,23 +1,29 @@
 import{ Bold as TiptapBold }from '@tiptap/extension-bold'
-import { CoustomOptions, Commands } from '../types'
+import { CoustomOptions, Commands, MenuOptions } from '../types'
 
-export default class CodeBlock {
-  constructor() {
-    const ZeroBold:any = TiptapBold.extend()
+
+export default class Bold {
+  constructor(option: CoustomOptions = {
+    showMenu: true,
+    toolTips: '加粗'
+  }) {
+    const ZeroBold:any = TiptapBold.extend();
     const customOptions: CoustomOptions = {
-      showMenu: true,
       toggleCommands({
         attribute
       }: Commands) {
-        this.commands.toggleBold(attribute);
-      }
+        this.commands.toggleBold(attribute)
+      },
     }
-    ZeroBold.customOptions = customOptions;
-    // TODO:测试作用
-    setTimeout(() => {
-      ZeroBold.addcustomCommands()
-    }, 5000);
     
+    const menusOptions: MenuOptions = {
+      showMenu: option.showMenu,
+      toolTips: option.toolTips,
+    }
+
+    ZeroBold.customOptions = customOptions;
+    ZeroBold.menusOptions = menusOptions;
+
     return ZeroBold
   }
 }

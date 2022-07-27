@@ -36,7 +36,7 @@
   
   
   const menus: Array<Object> = editor.options.extensions.filter((m: any) => {
-    return m.customOptions.showMenu
+    return m.menusOptions.showMenu
   })
 
   onMounted(() =>{

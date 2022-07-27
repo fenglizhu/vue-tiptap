@@ -2,15 +2,15 @@
   <div 
     :class="['editor-menu-item', { 'is-active': editor.isActive(name) }]">
     <div @click="onClick()">{{name}}</div>
-    <div v-if="extension.config.hasTab" class="editor-menu-tab">
+    <div v-if="extension.menusOptions.hasTab" class="editor-menu-tab">
       <!-- 背景色 -->
-      <button v-if="extension.config.paramsKey" @click="tableClick({[extension.config.paramsKey]: 'green'})">绿色背景和文本</button>
+      <button v-if="extension.menusOptions.clickParamsKey" @click="tableClick({[extension.menusOptions.clickParamsKey]: 'green'})">绿色背景和文本</button>
 
       <!-- 标题 -->
-      <button v-if="extension.config.paramsKey" @click="tableClick({[extension.config.paramsKey]: 3})">标题3</button>
+      <button v-if="extension.menusOptions.clickParamsKey" @click="tableClick({[extension.menusOptions.clickParamsKey]: 3})">标题3</button>
       
       <!-- 字体颜色 -->
-      <button v-if="extension.config.paramsKey" @click="tableClick({[extension.config.paramsKey]: 'red'})">红色背景和文本</button>
+      <button v-if="extension.menusOptions.clickParamsKey" @click="tableClick({[extension.menusOptions.clickParamsKey]: 'red'})">红色背景和文本</button>
 
     </div>
 

@@ -1,19 +1,27 @@
 import{ Strike as TiptapStrike }from '@tiptap/extension-strike'
-import { CoustomOptions, Commands } from '../types'
+import { CoustomOptions, Commands, MenuOptions } from '../types'
 
 export default class Strike {
-  constructor() {
-    const ZeroUnderline: any = TiptapStrike.extend()
+  constructor(option: CoustomOptions = {
+    showMenu: true,
+    toolTips: '删除'
+  }) {
+    const ZeroStrike: any = TiptapStrike.extend()
     const customOptions: CoustomOptions = {
-      showMenu: true,
       toggleCommands({
         attribute
       }: Commands) {
         this.commands.toggleStrike(attribute);
       }
     }
-    ZeroUnderline.customOptions = customOptions;
+    const menusOptions: MenuOptions = {
+      showMenu: option.showMenu,
+      toolTips: option.toolTips
+    }
+
+    ZeroStrike.customOptions = customOptions;
+    ZeroStrike.menusOptions = menusOptions;
     
-    return ZeroUnderline
+    return ZeroStrike
   }
 }

@@ -1,18 +1,27 @@
 import{ OrderedList as TiptapOrderedList }from '@tiptap/extension-ordered-list'
-import { CoustomOptions, Commands } from '../types'
+import { CoustomOptions, Commands, MenuOptions } from '../types'
 
 export default class OrderedList {
-  constructor() {
+  constructor(option: CoustomOptions = {
+    showMenu: true,
+    toolTips: '行高'
+  }) {
     const ZeroOrderedList:any = TiptapOrderedList.extend()
     const customOptions: CoustomOptions = {
-      showMenu: true,
       toggleCommands({
         attribute
       }: Commands) {
         this.commands.toggleOrderedList(attribute);
       }
     }
+
+    const menusOptions: MenuOptions = {
+      showMenu: option.showMenu,
+      toolTips: option.toolTips
+    }
+
     ZeroOrderedList.customOptions = customOptions;
+    ZeroOrderedList.menusOptions = menusOptions;
 
     return ZeroOrderedList
   }

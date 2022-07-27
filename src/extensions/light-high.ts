@@ -1,8 +1,8 @@
 import { Extension } from '@tiptap/core'
 import { NodeType, MarkType } from 'prosemirror-model'
-import { CoustomOptions, Commands } from '../types'
+import { CoustomOptions, Commands, MenuOptions } from '../types'
 
-interface TextAlignOptions {
+interface TextAlignOptions extends MenuOptions {
   types?: string[],
   alignments?: number[],
   defaultAlignment?: number,
@@ -71,12 +71,15 @@ const LineHeightExtension = Extension.create({
 })
 
 export default class LineHeight {
-  constructor({
-    types = ['heading', 'paragraph'],
-    alignments = [1, 1.15, 1.5, 2.0, 2.5, 3],
-    defaultAlignment = 1,
-    collapse = true
-  }: TextAlignOptions = {}) {
+  constructor(option: TextAlignOptions = {
+    types: ['heading', 'paragraph'],
+    alignments: [1, 1.15, 1.5, 2.0, 2.5, 3],
+    defaultAlignment: 1,
+    collapse: true,
+    showMenu: true,
+    toolTips: '行高'
+  }) {
+    const {types, alignments, defaultAlignment,collapse, showMenu, toolTips} = option
     const ZeroLineHeight: any = LineHeightExtension.extend({
       addOptions() {
         return {
@@ -88,8 +91,6 @@ export default class LineHeight {
     })
     
     const customOptions: CoustomOptions = {
-      showMenu: true,
-      collapse,
       toggleCommands({
         attribute
       }: Commands = {}) {
@@ -100,8 +101,16 @@ export default class LineHeight {
         }
       }
     }
-    
+
+    const menusOptions: MenuOptions = {
+      showMenu,
+      toolTips,
+      collapse
+    }
+
     ZeroLineHeight.customOptions = customOptions;
+    ZeroLineHeight.menusOptions = menusOptions;
+    
     return ZeroLineHeight
   }
 }

@@ -1,11 +1,13 @@
 import{ CodeBlock as TiptapCodeBlock }from '@tiptap/extension-code-block'
-import { CoustomOptions, Commands } from '../types'
+import { CoustomOptions, Commands, MenuOptions } from '../types'
 
 export default class CodeBlock {
-  constructor() {
+  constructor(option: CoustomOptions = {
+    showMenu: true,
+    toolTips: '代码块'
+  }) {
     const ZeroCodeBlock:any = TiptapCodeBlock.extend()
     const customOptions: CoustomOptions = {
-      showMenu: true,
       toggleCommands({
         attribute
       }: Commands) {
@@ -13,6 +15,14 @@ export default class CodeBlock {
       }
     }
     ZeroCodeBlock.customOptions = customOptions;
+
+    const menusOptions: MenuOptions = {
+      showMenu: option.showMenu,
+      toolTips: option.toolTips,
+    }
+
+    ZeroCodeBlock.customOptions = customOptions;
+    ZeroCodeBlock.menusOptions = menusOptions;
 
     return ZeroCodeBlock
   }

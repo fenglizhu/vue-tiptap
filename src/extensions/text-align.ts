@@ -1,7 +1,7 @@
-import { CoustomOptions, Commands } from '../types'
+import { CoustomOptions, Commands, MenuOptions } from '../types'
 import{ TextAlign as TiptapTextAlign }from '@tiptap/extension-text-align'
 
-interface TextAlignOptions {
+interface TextAlignOptions extends MenuOptions {
   types?: string[],
   alignments?: string[],
   defaultAlignment?: string,
@@ -14,7 +14,9 @@ export default class TextAlign {
     alignments = ['left', 'center', 'right', 'justify'],
     collapse = false,
     defaultAlignment = 'left',
-  }: TextAlignOptions = {}) {
+    showMenu = true,
+    toolTips = '对齐方式'
+  }: TextAlignOptions) {
     const ZeroTextAlign: any = TiptapTextAlign.extend({
       addOptions() {
         return {
@@ -25,16 +27,21 @@ export default class TextAlign {
       }
     })
     const customOptions: CoustomOptions = {
-      showMenu: true,
-      collapse,
       toggleCommands({
         attribute
       }: Commands) {
         this.commands.setTextAlign(attribute);
       }
     }
-    
+
+    const menusOptions: MenuOptions = {
+      showMenu,
+      toolTips,
+      collapse
+    }
+
     ZeroTextAlign.customOptions = customOptions;
+    ZeroTextAlign.menusOptions = menusOptions;
 
     return ZeroTextAlign
   }

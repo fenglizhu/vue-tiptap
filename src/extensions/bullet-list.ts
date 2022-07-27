@@ -1,19 +1,26 @@
 import{ BulletList as TiptapBulletList }from '@tiptap/extension-bullet-list'
-import { CoustomOptions, Commands } from '../types'
+import { CoustomOptions, Commands, MenuOptions } from '../types'
 
 export default class BulletList {
-  constructor() {
+  constructor(option: CoustomOptions = {
+    showMenu: true,
+    toolTips: '点列表'
+  }) {
     const ZeroBulletList:any = TiptapBulletList.extend()
     const customOptions: CoustomOptions = {
-      showMenu: true,
       toggleCommands({
         attribute
       }: Commands) {
         this.commands.toggleBulletList(attribute);
       }
     }
-    ZeroBulletList.customOptions = customOptions;
+    const menusOptions: MenuOptions = {
+      showMenu: option.showMenu,
+      toolTips: option.toolTips,
+    }
 
+    ZeroBulletList.customOptions = customOptions;
+    ZeroBulletList.menusOptions = menusOptions;
     return ZeroBulletList
   }
 }
