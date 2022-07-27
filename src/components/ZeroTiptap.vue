@@ -15,7 +15,7 @@
   
   import MenuBar from "./menu/MenuBar.vue";
 
-  import { ZeroEditor } from "../core/editor";
+  import { ZeroEditor } from "../core";
 
   const props = defineProps({
     content: {
@@ -50,7 +50,7 @@
     console.log(editor2);
   })
 
-  // console.log(menus);
+  console.log(menus);
   
 </script>
 
