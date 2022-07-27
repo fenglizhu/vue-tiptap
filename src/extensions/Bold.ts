@@ -13,7 +13,11 @@ export default class CodeBlock {
       }
     }
     ZeroBold.customOptions = customOptions;
-
+    // TODO:测试作用
+    setTimeout(() => {
+      ZeroBold.addcustomCommands()
+    }, 5000);
+    
     return ZeroBold
   }
 }
