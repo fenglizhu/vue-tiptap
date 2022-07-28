@@ -4,7 +4,7 @@ import { CoustomOptions, Commands, MenuOptions } from '../types'
 export default class OrderedList {
   constructor(option: CoustomOptions = {
     showMenu: true,
-    toolTips: '行高'
+    toolTips: '数字列表'
   }) {
     const ZeroOrderedList:any = TiptapOrderedList.extend()
     const customOptions: CoustomOptions = {
@@ -17,7 +17,10 @@ export default class OrderedList {
 
     const menusOptions: MenuOptions = {
       showMenu: option.showMenu,
-      toolTips: option.toolTips
+      toolTips: option.toolTips,
+      toggleCommand: function () {
+        this.editor.commands.toggleOrderedList();
+      }
     }
 
     ZeroOrderedList.customOptions = customOptions;

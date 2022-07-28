@@ -3,7 +3,7 @@ import{ Underline as TiptapUndeline }from '@tiptap/extension-underline'
 export default class Undeline {
   constructor(option: CoustomOptions = {
     showMenu: true,
-    toolTips: '行高'
+    toolTips: '下划线'
   }) {
     const ZeroUnderline: any = TiptapUndeline.extend()
     const customOptions: CoustomOptions = {
@@ -16,6 +16,9 @@ export default class Undeline {
     const menusOptions: MenuOptions = {
       showMenu: option.showMenu,
       toolTips: option.toolTips,
+      toggleCommand: function () {
+        this.editor.commands.toggleUnderline();
+      }
     }
 
     ZeroUnderline.customOptions = customOptions;

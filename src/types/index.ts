@@ -12,9 +12,13 @@ export interface Commands {
 }
 
 export interface MenuOptions {
+  [x: string]: any;
   showMenu?: Boolean,
   toolTips?: String,
   hasTab?: Boolean,
   clickParamsKey?: String,
-  collapse?: Boolean
+  collapse?: Boolean,
+  toggleCommand?: Function,
+  dropdown?: string[],
+  eleAttribute?: String
 }

@@ -16,7 +16,10 @@ export default class Strike {
     }
     const menusOptions: MenuOptions = {
       showMenu: option.showMenu,
-      toolTips: option.toolTips
+      toolTips: option.toolTips,
+      toggleCommand: function () {
+        this.editor.commands.toggleStrike();
+      }
     }
 
     ZeroStrike.customOptions = customOptions;

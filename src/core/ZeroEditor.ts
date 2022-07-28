@@ -14,19 +14,17 @@ export class ZeroEditor {
     const editor= new Editor(options);
     this.editor = editor;
     this.editor.menusOptions = this.menus;
-
     this.createMenuManager();
     this.renderMenusDom();
   }
 
   private createMenuManager() {
     this.editor.menusOptions.forEach((menusItem: any) => {
-      
-      menusItem['addcustomCommands'] = function() {
-        // TODO：没对应上每个扩展的事件
-        this.editor.commands.toggleBold()
+      if(menusItem.menusOptions.toggleCommand) {
+        menusItem.menusOptions.toggleCommand = menusItem.menusOptions.toggleCommand.bind({
+          editor: this.editor
+        })
       }
-      menusItem['addcustomCommands'] = menusItem['addcustomCommands'].bind({editor: this.editor})
     });
   }
 

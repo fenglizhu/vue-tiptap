@@ -19,6 +19,9 @@ export default class CodeBlock {
     const menusOptions: MenuOptions = {
       showMenu: option.showMenu,
       toolTips: option.toolTips,
+      toggleCommand: function () {
+        this.editor.commands.toggleCodeBlock();
+      }
     }
 
     ZeroCodeBlock.customOptions = customOptions;

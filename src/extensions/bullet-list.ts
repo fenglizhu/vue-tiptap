@@ -17,6 +17,9 @@ export default class BulletList {
     const menusOptions: MenuOptions = {
       showMenu: option.showMenu,
       toolTips: option.toolTips,
+      toggleCommand: function () {
+        this.editor.commands.toggleBulletList();
+      }
     }
 
     ZeroBulletList.customOptions = customOptions;

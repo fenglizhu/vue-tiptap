@@ -14,8 +14,9 @@ export default class MenusBar {
   public initMenus(menus: Extension | any) {
     menus.forEach((element: any) => {
       new MenuButton({
-        addcustomCommands: element.addcustomCommands,
-        toolTips: element.menusOptions.toolTips
+        toggleCommand: element.menusOptions.toggleCommand,
+        toolTips: element.menusOptions.toolTips,
+        dropdown: element.menusOptions.dropdown
       })
     });
   }

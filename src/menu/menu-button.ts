@@ -1,26 +1,47 @@
 import { renderElement } from "./render-dom";
 
 interface Menuoption {
-  addcustomCommands?: Function,
-  toolTips: string
+  toggleCommand?: Function,
+  toolTips: string,
+  dropdown: string[]
 }
 
 export class MenuButton {
   constructor({
-    addcustomCommands,
-    toolTips
+    toggleCommand,
+    toolTips,
+    dropdown
   }: Menuoption) {
-    this.createButton(addcustomCommands, toolTips)
+    this.createButton(toggleCommand, toolTips, dropdown)
   }
 
-  public createButton(addcustomCommands: Function | undefined, toolTips: string) {
+  public createButton(toggleCommand: Function | undefined, toolTips: string, dropdown: string[]) {
+    const children = dropdown && dropdown.map(item=> {
+      return {
+        type: 'div',
+        props: {
+          type: 'div',
+          className: 'btn-children',
+          // onClick: toggleCommand?.bind(null,item),
+          nodeValue: item,
+          setData: {
+            'data-color': item,
+          }
+        }
+      }
+    }) || []
+    console.log(children);
+    
+    
     const myElement = {
-      type: 'button',
+      type: 'div',
       props: {
-        type: 'button',
+        type: 'div',
         className: 'btn',
-        onClick: addcustomCommands,
-        children: [{ props: { nodeValue: toolTips } }]
+        onClick: toggleCommand,
+        nodeValue: toolTips,
+        children: children
+        // children: [{ props: { nodeValue: toolTips } }]
       }
     };
     

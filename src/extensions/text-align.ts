@@ -37,7 +37,13 @@ export default class TextAlign {
     const menusOptions: MenuOptions = {
       showMenu,
       toolTips,
-      collapse
+      collapse,
+      dropdown: [
+        '左对齐',
+        '居中对齐',
+        '右对齐',
+        '两端对齐',
+      ],
     }
 
     ZeroTextAlign.customOptions = customOptions;

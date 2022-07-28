@@ -15,10 +15,12 @@ export default class Bold {
         this.commands.toggleBold(attribute)
       },
     }
-    
     const menusOptions: MenuOptions = {
       showMenu: option.showMenu,
       toolTips: option.toolTips,
+      toggleCommand: function () {
+        this.editor.commands.toggleBold();
+      }
     }
 
     ZeroBold.customOptions = customOptions;

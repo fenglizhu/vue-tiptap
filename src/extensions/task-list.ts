@@ -4,7 +4,7 @@ import { CoustomOptions, Commands, MenuOptions } from '../types'
 export default class TaskList {
   constructor(option: CoustomOptions = {
     showMenu: true,
-    toolTips: '删除'
+    toolTips: '任务列表'
   }) {
     const ZeroTaskList:any = TiptapTaskList.extend()
     const customOptions: CoustomOptions = {
@@ -17,7 +17,10 @@ export default class TaskList {
 
     const menusOptions: MenuOptions = {
       showMenu: option.showMenu,
-      toolTips: option.toolTips
+      toolTips: option.toolTips,
+      toggleCommand: function () {
+        this.editor.commands.toggleTaskList();
+      }
     }
 
     ZeroTaskList.customOptions = customOptions;
