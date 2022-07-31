@@ -5,14 +5,12 @@ interface TextAlignOptions extends MenuOptions {
   types?: string[],
   alignments?: string[],
   defaultAlignment?: string,
-  collapse?: Boolean, // 是否需要折叠
 }
 
 export default class TextAlign {
   constructor({
     types = ['heading', 'paragraph'],
     alignments = ['left', 'center', 'right', 'justify'],
-    collapse = false,
     defaultAlignment = 'left',
     showMenu = true,
     toolTips = '对齐方式'
@@ -30,7 +28,6 @@ export default class TextAlign {
     const menusOptions: MenuOptions = {
       showMenu,
       toolTips,
-      collapse,
       dropdown: alignments,
       clickParamsKey: 'level',
       // TODO: 后续需要整理为什么

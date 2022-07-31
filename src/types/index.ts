@@ -1,23 +1,21 @@
 export interface CoustomOptions {
   [x: string]: any;
-  collapse?: Boolean,
   toggleCommands?: Function,
-  showMenu?: Boolean,
-  toolTips?: String
+  showMenu?: boolean,
+  toolTips?: string
 }
 
 type SN = number | string
 
 export interface MenuOptions {
   [x: string]: any;
-  showMenu?: Boolean,
-  toolTips?: String,
-  hasTab?: Boolean,
-  clickParamsKey?: String,
-  collapse?: Boolean,
+  showMenu?: boolean,
+  toolTips?: string,
+  hasTab?: boolean,
+  clickParamsKey?: string,
   toggleCommand?: Function,
   dropdown?: SN[],
-  eleAttribute?: String
+  eleAttribute?: string
 }
 
 export type HTMLElementEvent<T extends HTMLElement> = Event & {

@@ -6,7 +6,6 @@ interface TextAlignOptions extends MenuOptions {
   types?: string[],
   alignments?: number[],
   defaultAlignment?: number,
-  collapse?: Boolean, // 是否需要折叠
 }
 
 declare module '@tiptap/core' {
@@ -75,11 +74,10 @@ export default class LineHeight {
     types: ['heading', 'paragraph'],
     alignments: [1, 1.15, 1.5, 2.0, 2.5, 3],
     defaultAlignment: 1,
-    collapse: true,
     showMenu: true,
     toolTips: '行高'
   }) {
-    const {types, alignments, defaultAlignment,collapse, showMenu, toolTips} = option
+    const {types, alignments, defaultAlignment, showMenu, toolTips} = option
     const ZeroLineHeight: any = LineHeightExtension.extend({
       addOptions() {
         return {
@@ -93,7 +91,6 @@ export default class LineHeight {
     const menusOptions: MenuOptions = {
       showMenu,
       toolTips,
-      collapse,
       dropdown: alignments,
       toggleCommand: function (pointerEvent: HTMLElementEvent<HTMLElement>) {
         const element:Element = pointerEvent.target;
