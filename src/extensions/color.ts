@@ -1,15 +1,12 @@
 import{ Color as TiptapColor }from '@tiptap/extension-color'
-import { CoustomOptions, Commands, MenuOptions } from '../types'
+import { CoustomOptions, Commands, MenuOptions, HTMLElementEvent } from '../types'
 import { Colors } from "../types/color";
 
 interface ColorOptions extends CoustomOptions {
   colors: string[],
 }
 
-type HTMLElementEvent<T extends HTMLElement> = Event & {
-  target: T
-  currentTarget: T
-}
+
 
 export default class Color {
   constructor(option: ColorOptions = {
@@ -43,7 +40,7 @@ export default class Color {
       // TODO: 后续需要整理为什么
       toggleCommand: function (pointerEvent: HTMLElementEvent<HTMLElement>) {
         const element:Element = pointerEvent.target;
-        const color = element.getAttribute('data-color')
+        const color = element.getAttribute('data-attr')
         this.editor.commands.setColor(color);
       }
     }

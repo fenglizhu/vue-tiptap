@@ -1,6 +1,6 @@
 import { Extension } from '@tiptap/core'
 import { NodeType, MarkType } from 'prosemirror-model'
-import { CoustomOptions, Commands, MenuOptions } from '../types'
+import { CoustomOptions, Commands, MenuOptions, HTMLElementEvent } from '../types'
 
 interface TextAlignOptions extends MenuOptions {
   types?: string[],
@@ -105,7 +105,14 @@ export default class LineHeight {
     const menusOptions: MenuOptions = {
       showMenu,
       toolTips,
-      collapse
+      collapse,
+      dropdown: alignments,
+      toggleCommand: function (pointerEvent: HTMLElementEvent<HTMLElement>) {
+        const element:Element = pointerEvent.target;
+        const attr: string | null = element.getAttribute('data-attr')
+        const lineHeight: number = Number(attr);
+        this.editor.commands.setLineHeight(lineHeight);
+      }
     }
 
     ZeroLineHeight.customOptions = customOptions;

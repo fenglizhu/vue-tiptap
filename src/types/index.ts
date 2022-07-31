@@ -11,6 +11,8 @@ export interface Commands {
   attribute?: any
 }
 
+type SN = number | string
+
 export interface MenuOptions {
   [x: string]: any;
   showMenu?: Boolean,
@@ -19,6 +21,11 @@ export interface MenuOptions {
   clickParamsKey?: String,
   collapse?: Boolean,
   toggleCommand?: Function,
-  dropdown?: string[],
+  dropdown?: SN[],
   eleAttribute?: String
+}
+
+export type HTMLElementEvent<T extends HTMLElement> = Event & {
+  target: T
+  currentTarget: T
 }

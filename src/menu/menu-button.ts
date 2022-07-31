@@ -21,30 +21,40 @@ export class MenuButton {
         type: 'div',
         props: {
           type: 'div',
-          className: 'btn-children',
-          // onClick: toggleCommand?.bind(null,item),
+          className: 'btn',
           nodeValue: item,
           setData: {
-            'data-color': item,
+            'data-attr': item,
           }
         }
       }
     }) || []
-    console.log(children);
+    console.log(children.length);
     
-    
-    const myElement = {
+    const myElement: Record<string, any> = {
       type: 'div',
       props: {
         type: 'div',
-        className: 'btn',
+        className: 'editor-menu-item',
         onClick: toggleCommand,
         nodeValue: toolTips,
-        children: children
-        // children: [{ props: { nodeValue: toolTips } }]
+        children: []
       }
     };
-    
-    renderElement(myElement, document.body);
+
+    if(children.length) {
+      myElement.props.children = [
+        {
+          type: 'div',
+          props: {
+            type: 'div',
+            className: 'editor-menu-tab',
+            nodeValue: '',
+            children: children
+          }
+        }
+      ]
+    }
+    renderElement(myElement, document.querySelector('#zero-editor-menu') as HTMLElement);
   }
 }

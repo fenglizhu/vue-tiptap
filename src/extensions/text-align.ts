@@ -1,4 +1,4 @@
-import { CoustomOptions, Commands, MenuOptions } from '../types'
+import { CoustomOptions, Commands, MenuOptions, HTMLElementEvent } from '../types'
 import{ TextAlign as TiptapTextAlign }from '@tiptap/extension-text-align'
 
 interface TextAlignOptions extends MenuOptions {
@@ -38,12 +38,14 @@ export default class TextAlign {
       showMenu,
       toolTips,
       collapse,
-      dropdown: [
-        '左对齐',
-        '居中对齐',
-        '右对齐',
-        '两端对齐',
-      ],
+      dropdown: alignments,
+      clickParamsKey: 'level',
+      // TODO: 后续需要整理为什么
+      toggleCommand: function (pointerEvent: HTMLElementEvent<HTMLElement>) {
+        const element: Element = pointerEvent.target;
+        const align: string | null = element.getAttribute('data-attr')
+        this.editor.commands.setTextAlign(align)
+      }
     }
 
     ZeroTextAlign.customOptions = customOptions;
