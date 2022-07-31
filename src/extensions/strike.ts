@@ -1,5 +1,5 @@
 import{ Strike as TiptapStrike }from '@tiptap/extension-strike'
-import { CoustomOptions, Commands, MenuOptions } from '../types'
+import { CoustomOptions, MenuOptions } from '../types'
 
 export default class Strike {
   constructor(option: CoustomOptions = {

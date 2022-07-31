@@ -1,5 +1,5 @@
 import{ OrderedList as TiptapOrderedList }from '@tiptap/extension-ordered-list'
-import { CoustomOptions, Commands, MenuOptions } from '../types'
+import { CoustomOptions, MenuOptions } from '../types'
 
 export default class OrderedList {
   constructor(option: CoustomOptions = {

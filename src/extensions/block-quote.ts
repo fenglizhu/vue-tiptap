@@ -1,5 +1,5 @@
 import{ Blockquote as TiptapBlockquote }from '@tiptap/extension-blockquote'
-import { CoustomOptions, Commands, MenuOptions } from '../types'
+import { CoustomOptions, MenuOptions } from '../types'
 
 export default class BlockQuote {
   constructor(option: CoustomOptions = {

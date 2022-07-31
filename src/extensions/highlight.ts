@@ -1,7 +1,7 @@
 
 import { mergeAttributes } from '@tiptap/core'
 import { Highlight as TiptapHighlight } from "@tiptap/extension-highlight";
-import { CoustomOptions, Commands, MenuOptions, HTMLElementEvent } from '../types'
+import { CoustomOptions, MenuOptions, HTMLElementEvent } from '../types'
 import { Colors } from "../types/color";
 
 interface ColorOptions extends CoustomOptions {

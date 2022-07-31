@@ -1,6 +1,6 @@
 import { Extension } from '@tiptap/core'
 import { NodeType, MarkType } from 'prosemirror-model'
-import { CoustomOptions, Commands, MenuOptions, HTMLElementEvent } from '../types'
+import { CoustomOptions, MenuOptions, HTMLElementEvent } from '../types'
 
 interface TextAlignOptions extends MenuOptions {
   types?: string[],

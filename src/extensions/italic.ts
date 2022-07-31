@@ -1,5 +1,5 @@
 import { Italic as TiptapItalic } from "@tiptap/extension-italic";
-import { CoustomOptions, Commands, MenuOptions } from '../types'
+import { CoustomOptions, MenuOptions } from '../types'
 export default class Italic {
   constructor(option: CoustomOptions = {
     showMenu: true,

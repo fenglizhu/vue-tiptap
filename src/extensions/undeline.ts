@@ -1,4 +1,4 @@
-import { CoustomOptions, Commands, MenuOptions } from '../types'
+import { CoustomOptions, MenuOptions } from '../types'
 import{ Underline as TiptapUndeline }from '@tiptap/extension-underline'
 export default class Undeline {
   constructor(option: CoustomOptions = {

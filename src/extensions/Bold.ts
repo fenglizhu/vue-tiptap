@@ -1,5 +1,5 @@
 import{ Bold as TiptapBold }from '@tiptap/extension-bold'
-import { CoustomOptions, Commands, MenuOptions } from '../types'
+import { CoustomOptions, MenuOptions } from '../types'
 
 
 export default class Bold {

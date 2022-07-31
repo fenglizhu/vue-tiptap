@@ -1,5 +1,5 @@
 import{ Color as TiptapColor }from '@tiptap/extension-color'
-import { CoustomOptions, Commands, MenuOptions, HTMLElementEvent } from '../types'
+import { CoustomOptions, MenuOptions, HTMLElementEvent } from '../types'
 import { Colors } from "../types/color";
 
 interface ColorOptions extends CoustomOptions {

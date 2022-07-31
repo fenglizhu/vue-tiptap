@@ -1,5 +1,5 @@
 import{ BulletList as TiptapBulletList }from '@tiptap/extension-bullet-list'
-import { CoustomOptions, Commands, MenuOptions } from '../types'
+import { CoustomOptions, MenuOptions } from '../types'
 
 export default class BulletList {
   constructor(option: CoustomOptions = {

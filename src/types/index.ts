@@ -6,11 +6,6 @@ export interface CoustomOptions {
   toolTips?: String
 }
 
-// 点击菜单参数
-export interface Commands {
-  attribute?: any
-}
-
 type SN = number | string
 
 export interface MenuOptions {

@@ -1,5 +1,5 @@
 import{ TaskList as TiptapTaskList }from '@tiptap/extension-task-list'
-import { CoustomOptions, Commands, MenuOptions } from '../types'
+import { CoustomOptions, MenuOptions } from '../types'
 
 export default class TaskList {
   constructor(option: CoustomOptions = {

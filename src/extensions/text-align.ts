@@ -1,4 +1,4 @@
-import { CoustomOptions, Commands, MenuOptions, HTMLElementEvent } from '../types'
+import { CoustomOptions, MenuOptions, HTMLElementEvent } from '../types'
 import{ TextAlign as TiptapTextAlign }from '@tiptap/extension-text-align'
 
 interface TextAlignOptions extends MenuOptions {

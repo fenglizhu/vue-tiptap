@@ -1,5 +1,5 @@
 import{ Heading as TiptapHeading }from '@tiptap/extension-heading'
-import { CoustomOptions, Commands, MenuOptions, HTMLElementEvent } from '../types'
+import { CoustomOptions, MenuOptions, HTMLElementEvent } from '../types'
 
 export type Level = 1 | 2 | 3 | 4 | 5 | 6
 interface HeadingOption extends CoustomOptions {

@@ -1,5 +1,5 @@
 import{ CodeBlock as TiptapCodeBlock }from '@tiptap/extension-code-block'
-import { CoustomOptions, Commands, MenuOptions } from '../types'
+import { CoustomOptions, MenuOptions } from '../types'
 
 export default class CodeBlock {
   constructor(option: CoustomOptions = {
