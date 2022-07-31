@@ -14,27 +14,11 @@ export default class Color {
     toolTips: '文本颜色',
     colors: Colors
   }) {
-    const ZeroColor:any = TiptapColor.extend()
-    const clickParamsKey = 'color'
-    const customOptions: CoustomOptions = {
-      toggleCommands({
-        attribute
-      }: Commands) {
-        const color = attribute[clickParamsKey];
-        if (color) {
-          this.commands.setColor(color);
-        } else {
-          this.commands.unsetColor(color);
-        }
-        
-      }
-    }
-
+    const ZeroColor: Record<string, any> = TiptapColor.extend();
     const menusOptions: MenuOptions = {
       showMenu: option.showMenu,
       toolTips: option.toolTips,
       hasTab: true,
-      clickParamsKey,
       dropdown: option.colors,
       eleAttribute: 'color',
       // TODO: 后续需要整理为什么
@@ -44,8 +28,6 @@ export default class Color {
         this.editor.commands.setColor(color);
       }
     }
-
-    ZeroColor.customOptions = customOptions;
     ZeroColor.menusOptions = menusOptions;
 
     return ZeroColor

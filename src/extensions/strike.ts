@@ -7,13 +7,6 @@ export default class Strike {
     toolTips: '删除'
   }) {
     const ZeroStrike: any = TiptapStrike.extend()
-    const customOptions: CoustomOptions = {
-      toggleCommands({
-        attribute
-      }: Commands) {
-        this.commands.toggleStrike(attribute);
-      }
-    }
     const menusOptions: MenuOptions = {
       showMenu: option.showMenu,
       toolTips: option.toolTips,
@@ -21,8 +14,6 @@ export default class Strike {
         this.editor.commands.toggleStrike();
       }
     }
-
-    ZeroStrike.customOptions = customOptions;
     ZeroStrike.menusOptions = menusOptions;
     
     return ZeroStrike

@@ -7,14 +7,7 @@ export default class Bold {
     showMenu: true,
     toolTips: '加粗'
   }) {
-    const ZeroBold:any = TiptapBold.extend();
-    const customOptions: CoustomOptions = {
-      toggleCommands({
-        attribute
-      }: Commands) {
-        this.commands.toggleBold(attribute)
-      },
-    }
+    const ZeroBold: Record<string, any> = TiptapBold.extend();
     const menusOptions: MenuOptions = {
       showMenu: option.showMenu,
       toolTips: option.toolTips,
@@ -22,8 +15,6 @@ export default class Bold {
         this.editor.commands.toggleBold();
       }
     }
-
-    ZeroBold.customOptions = customOptions;
     ZeroBold.menusOptions = menusOptions;
 
     return ZeroBold

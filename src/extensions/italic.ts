@@ -5,14 +5,7 @@ export default class Italic {
     showMenu: true,
     toolTips: '斜体'
   }) {
-    const ZeroItalic: any = TiptapItalic.extend()
-    const customOptions: CoustomOptions = {
-      toggleCommands({
-        attribute
-      }: Commands) {
-        this.commands.toggleItalic(attribute);
-      }
-    }
+    const ZeroItalic: any = TiptapItalic.extend();
 
     const menusOptions: MenuOptions = {
       showMenu: option.showMenu,
@@ -21,8 +14,6 @@ export default class Italic {
         this.editor.commands.toggleItalic();
       }
     }
-
-    ZeroItalic.customOptions = customOptions;
     ZeroItalic.menusOptions = menusOptions;
     
     return ZeroItalic

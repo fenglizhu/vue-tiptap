@@ -6,14 +6,7 @@ export default class TaskList {
     showMenu: true,
     toolTips: '任务列表'
   }) {
-    const ZeroTaskList:any = TiptapTaskList.extend()
-    const customOptions: CoustomOptions = {
-      toggleCommands({
-        attribute
-      }: Commands) {
-        this.commands.toggleTaskList(attribute);
-      }
-    }
+    const ZeroTaskList: Record<string, any> = TiptapTaskList.extend()
 
     const menusOptions: MenuOptions = {
       showMenu: option.showMenu,
@@ -23,7 +16,6 @@ export default class TaskList {
       }
     }
 
-    ZeroTaskList.customOptions = customOptions;
     ZeroTaskList.menusOptions = menusOptions;
 
     return ZeroTaskList

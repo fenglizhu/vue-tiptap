@@ -6,14 +6,7 @@ export default class BulletList {
     showMenu: true,
     toolTips: '点列表'
   }) {
-    const ZeroBulletList:any = TiptapBulletList.extend()
-    const customOptions: CoustomOptions = {
-      toggleCommands({
-        attribute
-      }: Commands) {
-        this.commands.toggleBulletList(attribute);
-      }
-    }
+    const ZeroBulletList: Record<string, any> = TiptapBulletList.extend()
     const menusOptions: MenuOptions = {
       showMenu: option.showMenu,
       toolTips: option.toolTips,
@@ -21,8 +14,6 @@ export default class BulletList {
         this.editor.commands.toggleBulletList();
       }
     }
-
-    ZeroBulletList.customOptions = customOptions;
     ZeroBulletList.menusOptions = menusOptions;
     return ZeroBulletList
   }

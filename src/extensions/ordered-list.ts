@@ -6,14 +6,7 @@ export default class OrderedList {
     showMenu: true,
     toolTips: '数字列表'
   }) {
-    const ZeroOrderedList:any = TiptapOrderedList.extend()
-    const customOptions: CoustomOptions = {
-      toggleCommands({
-        attribute
-      }: Commands) {
-        this.commands.toggleOrderedList(attribute);
-      }
-    }
+    const ZeroOrderedList:any = TiptapOrderedList.extend();
 
     const menusOptions: MenuOptions = {
       showMenu: option.showMenu,
@@ -22,8 +15,6 @@ export default class OrderedList {
         this.editor.commands.toggleOrderedList();
       }
     }
-
-    ZeroOrderedList.customOptions = customOptions;
     ZeroOrderedList.menusOptions = menusOptions;
 
     return ZeroOrderedList

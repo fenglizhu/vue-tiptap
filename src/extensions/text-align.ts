@@ -17,7 +17,7 @@ export default class TextAlign {
     showMenu = true,
     toolTips = '对齐方式'
   }: TextAlignOptions) {
-    const ZeroTextAlign: any = TiptapTextAlign.extend({
+    const ZeroTextAlign: Record<string, any> = TiptapTextAlign.extend({
       addOptions() {
         return {
           types,
@@ -26,13 +26,6 @@ export default class TextAlign {
         }
       }
     })
-    const customOptions: CoustomOptions = {
-      toggleCommands({
-        attribute
-      }: Commands) {
-        this.commands.setTextAlign(attribute);
-      }
-    }
 
     const menusOptions: MenuOptions = {
       showMenu,
@@ -48,7 +41,6 @@ export default class TextAlign {
       }
     }
 
-    ZeroTextAlign.customOptions = customOptions;
     ZeroTextAlign.menusOptions = menusOptions;
 
     return ZeroTextAlign

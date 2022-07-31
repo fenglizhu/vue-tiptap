@@ -89,18 +89,6 @@ export default class LineHeight {
         }
       }
     })
-    
-    const customOptions: CoustomOptions = {
-      toggleCommands({
-        attribute
-      }: Commands = {}) {
-        if (attribute) {
-          this.commands.setLineHeight(attribute);
-        } else {
-          this.commands.unsetLineHeight();
-        }
-      }
-    }
 
     const menusOptions: MenuOptions = {
       showMenu,
@@ -114,8 +102,6 @@ export default class LineHeight {
         this.editor.commands.setLineHeight(lineHeight);
       }
     }
-
-    ZeroLineHeight.customOptions = customOptions;
     ZeroLineHeight.menusOptions = menusOptions;
     
     return ZeroLineHeight

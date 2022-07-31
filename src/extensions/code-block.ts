@@ -6,15 +6,7 @@ export default class CodeBlock {
     showMenu: true,
     toolTips: '代码块'
   }) {
-    const ZeroCodeBlock:any = TiptapCodeBlock.extend()
-    const customOptions: CoustomOptions = {
-      toggleCommands({
-        attribute
-      }: Commands) {
-        this.commands.toggleCodeBlock(attribute);
-      }
-    }
-    ZeroCodeBlock.customOptions = customOptions;
+    const ZeroCodeBlock: Record<string, any> = TiptapCodeBlock.extend()
 
     const menusOptions: MenuOptions = {
       showMenu: option.showMenu,
@@ -23,8 +15,6 @@ export default class CodeBlock {
         this.editor.commands.toggleCodeBlock();
       }
     }
-
-    ZeroCodeBlock.customOptions = customOptions;
     ZeroCodeBlock.menusOptions = menusOptions;
 
     return ZeroCodeBlock

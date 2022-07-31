@@ -16,7 +16,7 @@ export default class Highlight {
     showMenu: true,
     toolTips: '背景色'
   }) {
-    const ZeroHighlight:any = TiptapHighlight.extend({
+    const ZeroHighlight: Record<string, any> = TiptapHighlight.extend({
       addOptions() {
         return {
           multicolor: true,
@@ -27,15 +27,6 @@ export default class Highlight {
         return ['span', mergeAttributes(this.options.HTMLAttributes, HTMLAttributes), 0]
       },
     })
-    const customOptions: CoustomOptions = {
-      toggleCommands({
-        attribute
-      }: Commands) {
-        this.commands.toggleHighlight(attribute);
-      },
-      showMoreColor: option.showMoreColor,
-      tabOptions: option.color
-    }
 
     const menusOptions: MenuOptions = {
       showMenu: option.showMenu,
@@ -50,8 +41,6 @@ export default class Highlight {
         this.editor.commands.toggleHighlight({ color });
       }
     }
-
-    ZeroHighlight.customOptions = customOptions;
     ZeroHighlight.menusOptions = menusOptions;
 
     return ZeroHighlight

@@ -1,12 +1,12 @@
 <template>
-  <div v-if="editor" class="zero-editor-wrapper">
+  <!-- <div v-if="editor" class="zero-editor-wrapper">
     <MenuBar :menus="menus" :editor="editor"></MenuBar>
     <editor-content 
     :editor="editor"
     :class="['zero-editor-container']"
      />
      
-  </div>
+  </div> -->
   <div class="zero-editor-menu" id="zero-editor-menu"></div>
   <div id="test-id" style="height: 200px; background: #ccc;"></div>
 </template>

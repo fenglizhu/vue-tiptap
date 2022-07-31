@@ -13,13 +13,6 @@ export default class Heading {
     levels: [1, 2, 3, 4, 5, 6]
   }) {
     const ZeroHeading: Record<string, any> = TiptapHeading.extend()
-    const customOptions: CoustomOptions = {
-      toggleCommands({
-        attribute
-      }: Commands) {
-        this.commands.toggleHeading(attribute);
-      }
-    }
     
     const menusOptions: MenuOptions = {
       showMenu: option.showMenu,
@@ -35,8 +28,6 @@ export default class Heading {
         this.editor.commands.toggleHeading({ level });
       }
     }
-
-    ZeroHeading.customOptions = customOptions;
     ZeroHeading.menusOptions = menusOptions;
 
     return ZeroHeading

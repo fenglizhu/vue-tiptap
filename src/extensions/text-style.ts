@@ -4,14 +4,10 @@ import { CoustomOptions, MenuOptions } from '../types'
 export default class TextStyle {
   constructor () {
     
-    const ZeroTextStyle:any = TiptapTextStyle
-
-    const customOptions: CoustomOptions = {}
+    const ZeroTextStyle: Record<string, any> = TiptapTextStyle
     const menusOptions: MenuOptions = {
       showMenu: false
     }
-    
-    ZeroTextStyle.customOptions = customOptions;
     ZeroTextStyle.menusOptions = menusOptions;
     
     return ZeroTextStyle

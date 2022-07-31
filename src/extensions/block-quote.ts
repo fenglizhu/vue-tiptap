@@ -6,14 +6,7 @@ export default class BlockQuote {
     showMenu: true,
     toolTips: '引用'
   }) {
-    const ZeroBlockquote:any = TiptapBlockquote.extend()
-    const customOptions: CoustomOptions = {
-      toggleCommands({
-        attribute
-      }: Commands) {
-        this.commands.toggleBlockquote(attribute);
-      }
-    }
+    const ZeroBlockquote: Record<string, any> = TiptapBlockquote.extend()
 
     const menusOptions: MenuOptions = {
       showMenu: option.showMenu,
@@ -22,9 +15,6 @@ export default class BlockQuote {
         this.editor.commands.toggleBlockquote();
       }
     }
-
-
-    ZeroBlockquote.customOptions = customOptions;
     ZeroBlockquote.menusOptions = menusOptions;
 
     return ZeroBlockquote

@@ -3,12 +3,10 @@ import { CoustomOptions, MenuOptions } from '../types'
 
 export default class TaskItem {
   constructor() {
-    const ZeroTaskItem:any = TiptapTaskItem.extend()
-    const customOptions: CoustomOptions = {}
+    const ZeroTaskItem: Record<string, any> = TiptapTaskItem.extend()
     const menusOptions: MenuOptions = {
       showMenu: false
     }
-    ZeroTaskItem.customOptions = customOptions;
     ZeroTaskItem.menusOptions = menusOptions;
 
     return ZeroTaskItem
