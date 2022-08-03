@@ -3,20 +3,22 @@ import { CoustomOptions, MenuOptions } from '../types'
 
 
 export default class Bold {
-  constructor(option: CoustomOptions = {
-    showMenu: true,
-    toolTips: '加粗'
-  }) {
+  // extension?: Record<string, any>;
+  constructor({
+    showMenu = true, 
+    toolTips
+  }: CoustomOptions) {
     const ZeroBold: Record<string, any> = TiptapBold.extend();
     const menusOptions: MenuOptions = {
-      showMenu: option.showMenu,
-      toolTips: option.toolTips,
+      showMenu: showMenu,
+      toolTips: toolTips,
       toggleCommand: function () {
         this.editor.commands.toggleBold();
       }
     }
     ZeroBold.menusOptions = menusOptions;
-
+    // this.extension = ZeroBold
+    
     return ZeroBold
   }
 }

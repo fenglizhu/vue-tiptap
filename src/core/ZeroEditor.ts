@@ -11,11 +11,13 @@ export class ZeroEditor {
   menusBar!: MenusBar;
   editor: EditorType
   constructor(options?: any) {
+    console.log(options);
+    
     const editor= new Editor(options);
     this.editor = editor;
-    this.editor.menusOptions = this.menus;
-    this.createMenuManager();
-    this.renderMenusDom();
+    // this.editor.menusOptions = this.menus;
+    // this.createMenuManager();
+    // this.renderMenusDom();
   }
 
   private createMenuManager() {

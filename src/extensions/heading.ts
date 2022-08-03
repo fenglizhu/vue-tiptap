@@ -7,18 +7,18 @@ interface HeadingOption extends CoustomOptions {
 }
 
 export default class Heading {
-  constructor(option: HeadingOption = {
-    showMenu: true,
-    toolTips: '标题',
-    levels: [1, 2, 3, 4, 5, 6]
-  }) {
+  constructor({
+    showMenu = true,
+    toolTips = '标题',
+    levels = [1, 2, 3, 4, 5, 6]
+  }: HeadingOption) {
     const ZeroHeading: Record<string, any> = TiptapHeading.extend()
     
     const menusOptions: MenuOptions = {
-      showMenu: option.showMenu,
-      toolTips: option.toolTips,
+      showMenu: showMenu,
+      toolTips: toolTips,
       hasTab: true,
-      dropdown: option.levels,
+      dropdown: levels,
       clickParamsKey: 'level',
       // TODO: 后续需要整理为什么
       toggleCommand: function (pointerEvent: HTMLElementEvent<HTMLElement>) {

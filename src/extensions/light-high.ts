@@ -70,14 +70,13 @@ const LineHeightExtension = Extension.create({
 })
 
 export default class LineHeight {
-  constructor(option: TextAlignOptions = {
-    types: ['heading', 'paragraph'],
-    alignments: [1, 1.15, 1.5, 2.0, 2.5, 3],
-    defaultAlignment: 1,
-    showMenu: true,
-    toolTips: '行高'
-  }) {
-    const {types, alignments, defaultAlignment, showMenu, toolTips} = option
+  constructor({
+    types = ['heading', 'paragraph'],
+    alignments = [1, 1.15, 1.5, 2.0, 2.5, 3],
+    defaultAlignment = 1,
+    showMenu = true,
+    toolTips = '行高'
+  }: TextAlignOptions) {
     const ZeroLineHeight: any = LineHeightExtension.extend({
       addOptions() {
         return {

@@ -2,15 +2,15 @@ import{ Blockquote as TiptapBlockquote }from '@tiptap/extension-blockquote'
 import { CoustomOptions, MenuOptions } from '../types'
 
 export default class BlockQuote {
-  constructor(option: CoustomOptions = {
-    showMenu: true,
-    toolTips: '引用'
-  }) {
+  constructor({
+    showMenu = true,
+    toolTips = '引用'
+  }: CoustomOptions) {
     const ZeroBlockquote: Record<string, any> = TiptapBlockquote.extend()
 
     const menusOptions: MenuOptions = {
-      showMenu: option.showMenu,
-      toolTips: option.toolTips,
+      showMenu: showMenu,
+      toolTips: toolTips,
       toggleCommand: function () {
         this.editor.commands.toggleBlockquote();
       }

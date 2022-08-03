@@ -24,7 +24,10 @@ const content = `<p>
   </p>`;
 const extensions = [
   new StarterKit(),
-  new Bold(),
+  new Bold({
+    showMenu: false,
+    toolTips: '加个组、、、、粗'
+  }),
   new Highlight(),
   new TextStyle(),
   new Undeline(),

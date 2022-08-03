@@ -29,7 +29,7 @@ export class MenuButton {
         }
       }
     }) || []
-    console.log(children.length);
+    // console.log(children.length);
     
     const myElement: Record<string, any> = {
       type: 'div',

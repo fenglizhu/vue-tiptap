@@ -2,14 +2,14 @@ import{ Strike as TiptapStrike }from '@tiptap/extension-strike'
 import { CoustomOptions, MenuOptions } from '../types'
 
 export default class Strike {
-  constructor(option: CoustomOptions = {
-    showMenu: true,
-    toolTips: '删除'
-  }) {
+  constructor({
+    showMenu = true,
+    toolTips = '删除'
+  }: CoustomOptions) {
     const ZeroStrike: any = TiptapStrike.extend()
     const menusOptions: MenuOptions = {
-      showMenu: option.showMenu,
-      toolTips: option.toolTips,
+      showMenu: showMenu,
+      toolTips: toolTips,
       toggleCommand: function () {
         this.editor.commands.toggleStrike();
       }

@@ -5,17 +5,15 @@ import { CoustomOptions, MenuOptions, HTMLElementEvent } from '../types'
 import { Colors } from "../types/color";
 
 interface ColorOptions extends CoustomOptions {
-  colors: string[],
-  showMoreColor: boolean // TODO
+  colors: string[]
 }
 
 export default class Highlight {
-  constructor(option: ColorOptions = {
-    colors: Colors,
-    showMoreColor: true,
-    showMenu: true,
-    toolTips: '背景色'
-  }) {
+  constructor({
+    colors = Colors,
+    showMenu = true,
+    toolTips = '背景色'
+  }: ColorOptions) {
     const ZeroHighlight: Record<string, any> = TiptapHighlight.extend({
       addOptions() {
         return {
@@ -29,11 +27,11 @@ export default class Highlight {
     })
 
     const menusOptions: MenuOptions = {
-      showMenu: option.showMenu,
-      toolTips: option.toolTips,
+      showMenu: showMenu,
+      toolTips: toolTips,
       hasTab: true,
       clickParamsKey: 'color',
-      dropdown: option.colors,
+      dropdown: colors,
       eleAttribute: 'color',
       toggleCommand: function (pointerEvent: HTMLElementEvent<HTMLElement>) {
         const element:Element = pointerEvent.target;

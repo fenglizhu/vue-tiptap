@@ -1,15 +1,15 @@
 import { Italic as TiptapItalic } from "@tiptap/extension-italic";
 import { CoustomOptions, MenuOptions } from '../types'
 export default class Italic {
-  constructor(option: CoustomOptions = {
-    showMenu: true,
-    toolTips: '斜体'
-  }) {
+  constructor({
+    showMenu = true,
+    toolTips = '斜体'
+  }: CoustomOptions) {
     const ZeroItalic: any = TiptapItalic.extend();
 
     const menusOptions: MenuOptions = {
-      showMenu: option.showMenu,
-      toolTips: option.toolTips,
+      showMenu: showMenu,
+      toolTips: toolTips,
       toggleCommand: function () {
         this.editor.commands.toggleItalic();
       }

@@ -2,15 +2,15 @@ import{ OrderedList as TiptapOrderedList }from '@tiptap/extension-ordered-list'
 import { CoustomOptions, MenuOptions } from '../types'
 
 export default class OrderedList {
-  constructor(option: CoustomOptions = {
-    showMenu: true,
-    toolTips: '数字列表'
-  }) {
+  constructor({
+    showMenu = true,
+    toolTips = '数字列表'
+  }: CoustomOptions) {
     const ZeroOrderedList:any = TiptapOrderedList.extend();
 
     const menusOptions: MenuOptions = {
-      showMenu: option.showMenu,
-      toolTips: option.toolTips,
+      showMenu: showMenu,
+      toolTips: toolTips,
       toggleCommand: function () {
         this.editor.commands.toggleOrderedList();
       }
