@@ -5,7 +5,7 @@ export default class BlockQuote {
   constructor({
     showMenu = true,
     toolTips = '引用'
-  }: CoustomOptions) {
+  }: CoustomOptions = {}) {
     const ZeroBlockquote: Record<string, any> = TiptapBlockquote.extend()
 
     const menusOptions: MenuOptions = {

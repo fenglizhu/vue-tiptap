@@ -15,9 +15,9 @@ export class ZeroEditor {
     
     const editor= new Editor(options);
     this.editor = editor;
-    // this.editor.menusOptions = this.menus;
-    // this.createMenuManager();
-    // this.renderMenusDom();
+    this.editor.menusOptions = this.menus;
+    this.createMenuManager();
+    this.renderMenusDom();
   }
 
   private createMenuManager() {

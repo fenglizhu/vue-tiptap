@@ -14,7 +14,7 @@ export default class TextAlign {
     defaultAlignment = 'left',
     showMenu = true,
     toolTips = '对齐方式'
-  }: TextAlignOptions) {
+  }: TextAlignOptions = {}) {
     const ZeroTextAlign: Record<string, any> = TiptapTextAlign.extend({
       addOptions() {
         return {

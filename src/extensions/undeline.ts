@@ -4,7 +4,7 @@ export default class Undeline {
   constructor({
     showMenu = true,
     toolTips = '下划线'
-  }: CoustomOptions) {
+  }: CoustomOptions = {}) {
     const ZeroUnderline: Record<string, any> = TiptapUndeline.extend()
     const menusOptions: MenuOptions = {
       showMenu: showMenu,

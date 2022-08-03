@@ -36,9 +36,9 @@
   
   
   
-  // const menus: Array<Object> = editor.options.extensions.filter((m: any) => {
-  //   return m.menusOptions.showMenu
-  // })
+  const menus: Array<Object> = editor.options.extensions.filter((m: any) => {
+    return m.menusOptions.showMenu
+  })
 
   onMounted(() =>{
     const element: Element = document.querySelector('#test-id') as HTMLElement
@@ -51,7 +51,7 @@
     console.log(editor2);
   })
 
-  // console.log(menus);
+  console.log(menus);
   
 </script>
 

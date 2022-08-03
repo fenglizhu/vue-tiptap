@@ -5,7 +5,7 @@ export default class CodeBlock {
   constructor({
     showMenu = true,
     toolTips = '代码块'
-  }: CoustomOptions) {
+  }: CoustomOptions = {}) {
     const ZeroCodeBlock: Record<string, any> = TiptapCodeBlock.extend()
 
     const menusOptions: MenuOptions = {

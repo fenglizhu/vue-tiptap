@@ -3,7 +3,7 @@ import { CoustomOptions, MenuOptions, HTMLElementEvent } from '../types'
 import { Colors } from "../types/color";
 
 interface ColorOptions extends CoustomOptions {
-  colors: string[],
+  colors?: string[],
 }
 
 export default class Color {
@@ -11,7 +11,7 @@ export default class Color {
     showMenu = true,
     toolTips = '文本颜色',
     colors = Colors
-  }: ColorOptions) {
+  }: ColorOptions = {}) {
     const ZeroColor: Record<string, any> = TiptapColor.extend();
     const menusOptions: MenuOptions = {
       showMenu: showMenu,

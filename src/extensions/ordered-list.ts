@@ -5,7 +5,7 @@ export default class OrderedList {
   constructor({
     showMenu = true,
     toolTips = '数字列表'
-  }: CoustomOptions) {
+  }: CoustomOptions = {}) {
     const ZeroOrderedList:any = TiptapOrderedList.extend();
 
     const menusOptions: MenuOptions = {

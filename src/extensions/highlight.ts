@@ -5,7 +5,7 @@ import { CoustomOptions, MenuOptions, HTMLElementEvent } from '../types'
 import { Colors } from "../types/color";
 
 interface ColorOptions extends CoustomOptions {
-  colors: string[]
+  colors?: string[]
 }
 
 export default class Highlight {
@@ -13,7 +13,7 @@ export default class Highlight {
     colors = Colors,
     showMenu = true,
     toolTips = '背景色'
-  }: ColorOptions) {
+  }: ColorOptions = {}) {
     const ZeroHighlight: Record<string, any> = TiptapHighlight.extend({
       addOptions() {
         return {

@@ -11,7 +11,9 @@ export default class Heading {
     showMenu = true,
     toolTips = '标题',
     levels = [1, 2, 3, 4, 5, 6]
-  }: HeadingOption) {
+  }: HeadingOption = {
+    levels: []
+  }) {
     const ZeroHeading: Record<string, any> = TiptapHeading.extend()
     
     const menusOptions: MenuOptions = {

@@ -5,7 +5,7 @@ export default class Strike {
   constructor({
     showMenu = true,
     toolTips = '删除'
-  }: CoustomOptions) {
+  }: CoustomOptions = {}) {
     const ZeroStrike: any = TiptapStrike.extend()
     const menusOptions: MenuOptions = {
       showMenu: showMenu,

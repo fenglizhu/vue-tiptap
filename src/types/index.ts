@@ -1,6 +1,6 @@
 export interface CoustomOptions {
-  showMenu: boolean,
-  toolTips: string
+  showMenu?: boolean,
+  toolTips?: string
 }
 
 type SN = number | string

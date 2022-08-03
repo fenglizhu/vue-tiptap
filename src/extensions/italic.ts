@@ -4,7 +4,7 @@ export default class Italic {
   constructor({
     showMenu = true,
     toolTips = '斜体'
-  }: CoustomOptions) {
+  }: CoustomOptions = {}) {
     const ZeroItalic: any = TiptapItalic.extend();
 
     const menusOptions: MenuOptions = {

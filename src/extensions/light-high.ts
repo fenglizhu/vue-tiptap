@@ -76,7 +76,7 @@ export default class LineHeight {
     defaultAlignment = 1,
     showMenu = true,
     toolTips = '行高'
-  }: TextAlignOptions) {
+  }: TextAlignOptions = {}) {
     const ZeroLineHeight: any = LineHeightExtension.extend({
       addOptions() {
         return {

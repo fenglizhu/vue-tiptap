@@ -5,7 +5,7 @@ export default class TaskList {
   constructor({
     showMenu = true,
     toolTips = '任务列表'
-  }: CoustomOptions) {
+  }: CoustomOptions = {}) {
     const ZeroTaskList: Record<string, any> = TiptapTaskList.extend()
 
     const menusOptions: MenuOptions = {

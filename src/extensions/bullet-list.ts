@@ -5,7 +5,7 @@ export default class BulletList {
   constructor({
     showMenu = true,
     toolTips = '点列表'
-  }: CoustomOptions) {
+  }: CoustomOptions = {}) {
     const ZeroBulletList: Record<string, any> = TiptapBulletList.extend()
     const menusOptions: MenuOptions = {
       showMenu: showMenu,
