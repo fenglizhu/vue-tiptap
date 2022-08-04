@@ -8,7 +8,7 @@
      
   </div> -->
   <div class="zero-editor-menu" id="zero-editor-menu"></div>
-  <div id="test-id" style="height: 200px; background: #ccc;"></div>
+  <div id="test-id"></div>
 </template>
 <script setup lang="ts">
   import { defineProps, onMounted } from "vue";

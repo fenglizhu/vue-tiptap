@@ -40,8 +40,8 @@ export class ZeroEditor {
     this.editor.menusOptions = this.menus;
     this.createMenuManager();
     this.renderMenusDom();
+    this.renderContainerDom()
   }
-
   public setOptions(options: Partial<EditorOptions> = {}) {
     const extensions = options.extensions || []
     this.options = {
@@ -66,6 +66,12 @@ export class ZeroEditor {
    */
   private renderMenusDom() {
     this.menusBar = new MenusBar(this.editor.menusOptions,this.editor)
+  }
+  /**
+   * 处理编辑器内容DOM
+   */
+  renderContainerDom() {
+    this.options.element?.classList.add('zero-editor-container')
   }
 
   get extensions() {

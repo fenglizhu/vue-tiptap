@@ -1,5 +1,6 @@
 import { HTMLElementEvent } from "../types";
 import { renderElement } from "./render-dom";
+import { removeTabClass } from "./tab-operation";
 
 interface Menuoption {
   toggleCommand?: Function,
@@ -16,14 +17,15 @@ interface DOM {
   children?: Record<string,any>[]
 }
 
-export class MenuButton {
+export class MenuButton{
+  dropdownShow: boolean;
   constructor({
     toggleCommand,
     toolTips,
     dropdown
   }: Menuoption) {
+    this.dropdownShow = false;
     this.createButton(toggleCommand, toolTips, dropdown);
-    this.hideDropdown()
   }
 
   public createButton(toggleCommand: Function | undefined, toolTips: string, dropdown: string[]) {
@@ -38,40 +40,23 @@ export class MenuButton {
         }
       })
     }) || []
-    
+    const _this = this;
     const myElement: Record<string, any> = {
       type: 'div',
       props: {
         type: 'div',
         className: 'editor-menu-item',
         onClick: function(pointerEvent: HTMLElementEvent<HTMLElement>) {
-          
-          if(dropdown) {
-            if(pointerEvent.target.classList.contains('editor-menu-item')) {
+          if(dropdown && pointerEvent.target.classList.contains('editor-menu-item')) {
               // 移除其他的面板
-              const childrenElement = pointerEvent.target.parentElement!.children || []
-              for (let i = 0; i < childrenElement.length; i++) {
-                if(childrenElement[i] !== pointerEvent.target){
-                  childrenElement[i].classList.remove('display-tab')
-                }
-              }
-              
-              pointerEvent.target.classList.toggle('display-tab')
-            }else {
-              const childrenElement = pointerEvent.target.parentElement?.parentElement?.parentElement!.children || []
-              for (let i = 0; i < childrenElement.length; i++) {
-                childrenElement[i].classList.remove('display-tab')
-              }
-              toggleCommand && toggleCommand(pointerEvent)
-            }
+            removeTabClass(pointerEvent.target)
+            pointerEvent.target.classList.toggle('display-tab');
           }else {
-            const childrenElement = pointerEvent.target.parentElement!.children || []
-            for (let i = 0; i < childrenElement.length; i++) {
-              childrenElement[i].classList.remove('display-tab')
-            }
+            removeTabClass()
             // 点击其他也要去掉面板
             toggleCommand && toggleCommand(pointerEvent)
           }
+          pointerEvent.stopPropagation()
         },
         nodeValue: toolTips,
         children: [
@@ -111,16 +96,6 @@ export class MenuButton {
         setData,
         children
       }
-    }
-  }
-  /**
-   * hideDropdown
-   */
-  public hideDropdown() {
-    document.onclick = function(pointerEvent) {
-      console.log(pointerEvent);
-      
-      
     }
   }
 }
