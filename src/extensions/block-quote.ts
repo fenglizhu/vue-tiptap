@@ -1,7 +1,8 @@
-import{ Blockquote as TiptapBlockquote }from '@tiptap/extension-blockquote'
+import { Blockquote as TiptapBlockquote } from '@tiptap/extension-blockquote'
 import { CoustomOptions, MenuOptions } from '../types'
 
 export default class BlockQuote {
+  extension: Record<string, any>;
   constructor({
     showMenu = true,
     toolTips = '引用'
@@ -16,7 +17,6 @@ export default class BlockQuote {
       }
     }
     ZeroBlockquote.menusOptions = menusOptions;
-
-    return ZeroBlockquote
+    this.extension = ZeroBlockquote;
   }
 }

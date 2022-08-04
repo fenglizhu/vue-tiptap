@@ -7,9 +7,6 @@ export default class Bold {
     showMenu = true, 
     toolTips = '加粗'
   }: CoustomOptions = {}) {
-    console.log(showMenu);
-    console.log(toolTips);
-    
     const ZeroBold: Record<string, any> = TiptapBold.extend();
     const menusOptions: MenuOptions = {
       showMenu: showMenu,

@@ -2,6 +2,7 @@ import{ Strike as TiptapStrike }from '@tiptap/extension-strike'
 import { CoustomOptions, MenuOptions } from '../types'
 
 export default class Strike {
+  extension: Record<string, any>;
   constructor({
     showMenu = true,
     toolTips = '删除'
@@ -15,7 +16,6 @@ export default class Strike {
       }
     }
     ZeroStrike.menusOptions = menusOptions;
-    
-    return ZeroStrike
+    this.extension = ZeroStrike
   }
 }

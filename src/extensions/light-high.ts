@@ -70,6 +70,7 @@ const LineHeightExtension = Extension.create({
 })
 
 export default class LineHeight {
+  extension: Record<string, any>;
   constructor({
     types = ['heading', 'paragraph'],
     alignments = [1, 1.15, 1.5, 2.0, 2.5, 3],
@@ -99,7 +100,6 @@ export default class LineHeight {
       }
     }
     ZeroLineHeight.menusOptions = menusOptions;
-    
-    return ZeroLineHeight
+    this.extension = ZeroLineHeight;
   }
 }

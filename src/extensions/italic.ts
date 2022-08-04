@@ -1,6 +1,7 @@
 import { Italic as TiptapItalic } from "@tiptap/extension-italic";
 import { CoustomOptions, MenuOptions } from '../types'
 export default class Italic {
+  extension: Record<string, any>;
   constructor({
     showMenu = true,
     toolTips = '斜体'
@@ -15,7 +16,6 @@ export default class Italic {
       }
     }
     ZeroItalic.menusOptions = menusOptions;
-    
-    return ZeroItalic
+    this.extension = ZeroItalic;
   }
 }

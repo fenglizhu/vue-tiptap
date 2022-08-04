@@ -9,6 +9,7 @@ interface ColorOptions extends CoustomOptions {
 }
 
 export default class Highlight {
+  extension: Record<string, any>;
   constructor({
     colors = Colors,
     showMenu = true,
@@ -40,7 +41,6 @@ export default class Highlight {
       }
     }
     ZeroHighlight.menusOptions = menusOptions;
-
-    return ZeroHighlight
+    this.extension = ZeroHighlight;
   }
 }

@@ -2,6 +2,7 @@ import{ TaskList as TiptapTaskList }from '@tiptap/extension-task-list'
 import { CoustomOptions, MenuOptions } from '../types'
 
 export default class TaskList {
+  extension: Record<string, any>;
   constructor({
     showMenu = true,
     toolTips = '任务列表'
@@ -17,7 +18,6 @@ export default class TaskList {
     }
 
     ZeroTaskList.menusOptions = menusOptions;
-
-    return ZeroTaskList
+    this.extension = ZeroTaskList
   }
 }

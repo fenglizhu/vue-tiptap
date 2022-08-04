@@ -2,6 +2,7 @@ import{ CodeBlock as TiptapCodeBlock }from '@tiptap/extension-code-block'
 import { CoustomOptions, MenuOptions } from '../types'
 
 export default class CodeBlock {
+  extension: Record<string, any>;
   constructor({
     showMenu = true,
     toolTips = '代码块'
@@ -16,7 +17,6 @@ export default class CodeBlock {
       }
     }
     ZeroCodeBlock.menusOptions = menusOptions;
-
-    return ZeroCodeBlock
+    this.extension = ZeroCodeBlock
   }
 }

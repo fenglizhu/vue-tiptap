@@ -2,6 +2,7 @@ import {TextStyle as TiptapTextStyle} from '@tiptap/extension-text-style'
 import { CoustomOptions, MenuOptions } from '../types'
 
 export default class TextStyle {
+  extension: Record<string, any>;
   constructor () {
     
     const ZeroTextStyle: Record<string, any> = TiptapTextStyle
@@ -9,7 +10,6 @@ export default class TextStyle {
       showMenu: false
     }
     ZeroTextStyle.menusOptions = menusOptions;
-    
-    return ZeroTextStyle
+    this.extension = ZeroTextStyle;
   }
 }

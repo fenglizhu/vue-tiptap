@@ -13,6 +13,7 @@
 <script setup lang="ts">
   import { defineProps, onMounted } from "vue";
   import { Editor, EditorContent } from '@tiptap/vue-3'
+  import { Extensions  } from '@tiptap/core'
   
   import MenuBar from "./menu/MenuBar.vue";
 
@@ -24,21 +25,22 @@
       default: ''
     },
     extensions: {
-      type: Array,
+      type: [],
       default: () => []
     }
   })
-  const extensions: any[] = props.extensions
-  const editor = new Editor({
-    content: props.content,
-    extensions: extensions
-  })
+  const extensions: Extensions = props.extensions
+  // const editor = new Editor({
+  //   content: props.content,
+  //   extensions: extensions
+  // })
   
   
+  // console.log(editor);
   
-  const menus: Array<Object> = editor.options.extensions.filter((m: any) => {
-    return m.menusOptions.showMenu
-  })
+  // const menus: Array<Object> = editor.options.extensions.filter((m: any) => {
+  //   return m.menusOptions.showMenu
+  // })
 
   onMounted(() =>{
     const element: Element = document.querySelector('#test-id') as HTMLElement
@@ -51,7 +53,7 @@
     console.log(editor2);
   })
 
-  console.log(menus);
+  // console.log(menus);
   
 </script>
 

@@ -7,6 +7,7 @@ interface HeadingOption extends CoustomOptions {
 }
 
 export default class Heading {
+  extension: Record<string, any>
   constructor({
     showMenu = true,
     toolTips = '标题',
@@ -31,7 +32,6 @@ export default class Heading {
       }
     }
     ZeroHeading.menusOptions = menusOptions;
-
-    return ZeroHeading
+    this.extension = ZeroHeading;
   }
 }

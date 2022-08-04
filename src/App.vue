@@ -24,7 +24,7 @@ const content = `<p>
   </p>`;
 const extensions = [
   new StarterKit(),
-  new Bold().extension,
+  new Bold(),
   new Highlight(),
   new TextStyle(),
   new Undeline(),

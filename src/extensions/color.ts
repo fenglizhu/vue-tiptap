@@ -7,6 +7,7 @@ interface ColorOptions extends CoustomOptions {
 }
 
 export default class Color {
+  extension: Record<string, any>;
   constructor({
     showMenu = true,
     toolTips = '文本颜色',
@@ -27,7 +28,6 @@ export default class Color {
       }
     }
     ZeroColor.menusOptions = menusOptions;
-
-    return ZeroColor
+    this.extension = ZeroColor;
   }
 }

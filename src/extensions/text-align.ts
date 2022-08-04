@@ -8,6 +8,7 @@ interface TextAlignOptions extends MenuOptions {
 }
 
 export default class TextAlign {
+  extension: Record<string, any>;
   constructor({
     types = ['heading', 'paragraph'],
     alignments = ['left', 'center', 'right', 'justify'],
@@ -39,7 +40,6 @@ export default class TextAlign {
     }
 
     ZeroTextAlign.menusOptions = menusOptions;
-
-    return ZeroTextAlign
+    this.extension = ZeroTextAlign;
   }
 }

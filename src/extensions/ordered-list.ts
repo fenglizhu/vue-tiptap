@@ -2,6 +2,7 @@ import{ OrderedList as TiptapOrderedList }from '@tiptap/extension-ordered-list'
 import { CoustomOptions, MenuOptions } from '../types'
 
 export default class OrderedList {
+  extension: Record<string, any>;
   constructor({
     showMenu = true,
     toolTips = '数字列表'
@@ -16,7 +17,6 @@ export default class OrderedList {
       }
     }
     ZeroOrderedList.menusOptions = menusOptions;
-
-    return ZeroOrderedList
+    this.extension = ZeroOrderedList
   }
 }
