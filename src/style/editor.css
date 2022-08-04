@@ -17,6 +17,7 @@
   flex-wrap: wrap;
   padding: 10px;
   align-items: center;
+  background: white;
 }
 
 .editor-menu-item{
@@ -45,9 +46,39 @@
   background-color: #f4f4f5;
 }
 
-.editor-menu-item:hover .editor-menu-tab{
+.editor-menu-item.display-tab .editor-menu-tab{
   display: flex;
   flex-direction: column;
+}
+
+/* tooltip */
+.editor-menu-tool-tip{
+  opacity: 0;
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  padding: 0 10px;
+  border-radius: 4px;
+  background: rgba(0,0,0,0.5);
+  color: white;
+  word-break: keep-all;
+  transform: translate(-50%, 0px);
+  transition: 0.3s;
+}
+.editor-menu-tool-tip:after{
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  content: '';
+  border: 5px solid rgba(0,0,0,0.5);
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+  transform: translate(-50%, 0px);
+  
+}
+.editor-menu-item:hover .editor-menu-tool-tip{
+  opacity: 1;
 }
 
 ul[data-type="taskList"] {

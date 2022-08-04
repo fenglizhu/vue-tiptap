@@ -3,7 +3,7 @@ import { CoustomOptions, MenuOptions, HTMLElementEvent } from '../types'
 
 export type Level = 1 | 2 | 3 | 4 | 5 | 6
 interface HeadingOption extends CoustomOptions {
-  levels: Level[]
+  levels?: Level[]
 }
 
 export default class Heading {
@@ -12,9 +12,9 @@ export default class Heading {
     showMenu = true,
     toolTips = '标题',
     levels = [1, 2, 3, 4, 5, 6]
-  }: HeadingOption = {
-    levels: []
-  }) {
+  }: HeadingOption = {}) {
+    console.log(levels);
+    
     const ZeroHeading: Record<string, any> = TiptapHeading.extend()
     
     const menusOptions: MenuOptions = {
@@ -23,7 +23,6 @@ export default class Heading {
       hasTab: true,
       dropdown: levels,
       clickParamsKey: 'level',
-      // TODO: 后续需要整理为什么
       toggleCommand: function (pointerEvent: HTMLElementEvent<HTMLElement>) {
         const element: Element = pointerEvent.target;
         const attr: string | null = element.getAttribute('data-attr')

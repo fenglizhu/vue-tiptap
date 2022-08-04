@@ -52,7 +52,7 @@ export class ZeroEditor {
   }
 
   private createMenuManager() {
-    this.editor.menusOptions.forEach((menusItem: any) => {
+    this.editor.menusOptions.forEach((menusItem: Record<string,any>) => {
       if(menusItem.menusOptions.toggleCommand) {
         menusItem.menusOptions.toggleCommand = menusItem.menusOptions.toggleCommand.bind({
           editor: this.editor

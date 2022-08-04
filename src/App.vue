@@ -46,7 +46,7 @@ const extensions = [
 </script>
 
 <template>
-  <div style="width: 500px; margin: 10px auto">
+  <div style="width: 1000px; margin: 50px auto">
     <ZeroTiptap :content="content" :extensions="extensions" />
   </div>
   <!-- <Tiptap></Tiptap> -->
