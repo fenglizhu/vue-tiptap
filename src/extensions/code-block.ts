@@ -12,6 +12,7 @@ export default class CodeBlock {
     const menusOptions: MenuOptions = {
       showMenu: showMenu,
       toolTips: toolTips,
+      dataNeType: 'codeBlock',
       toggleCommand: function () {
         this.editor.commands.toggleCodeBlock();
       }

@@ -13,7 +13,6 @@ export default class Heading {
     toolTips = '标题',
     levels = [1, 2, 3, 4, 5, 6]
   }: HeadingOption = {}) {
-    console.log(levels);
     
     const ZeroHeading: Record<string, any> = TiptapHeading.extend()
     

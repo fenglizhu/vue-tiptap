@@ -12,6 +12,7 @@ export default class TaskList {
     const menusOptions: MenuOptions = {
       showMenu: showMenu,
       toolTips: toolTips,
+      dataNeType: 'taskList',
       toggleCommand: function () {
         this.editor.commands.toggleTaskList();
       }

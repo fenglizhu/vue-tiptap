@@ -12,6 +12,7 @@ export default class BlockQuote {
     const menusOptions: MenuOptions = {
       showMenu: showMenu,
       toolTips: toolTips,
+      dataNeType: 'blockquote',
       toggleCommand: function () {
         this.editor.commands.toggleBlockquote();
       }

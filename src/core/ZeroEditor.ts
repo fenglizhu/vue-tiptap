@@ -8,7 +8,7 @@ type EditorType =
 
 
 export class ZeroEditor {
-  menusBar: MenusBar | undefined;
+  menusBar!: MenusBar;
   editor: EditorType
   public options: Partial<EditorOptions> = {
     element: undefined,
@@ -44,14 +44,7 @@ export class ZeroEditor {
     const editor= new Editor({
       ...this.options as any,
       onSelectionUpdate: () => {
-        const menus = this.menuElement.querySelectorAll('.editor-menu-item');
-        menus.forEach(element => {
-          if (editor.isActive('bold') && element.getAttribute('data-ne-type') === 'bold') {
-            element.classList.add('selected')
-          } else if (!editor.isActive('bold') && element.getAttribute('data-ne-type') === 'bold') {
-            element.classList.remove('selected')
-          }
-        });
+        this.menusBar.setActiveMenus(editor);
       }
     });
     this.editor = editor;
@@ -59,9 +52,7 @@ export class ZeroEditor {
     this.createMenuManager();
     this.renderContainerDom();
     this.renderMenusDom();
-    console.log(this.menusBar);
   }
-
   /**
    * 设置元素的参数
    */

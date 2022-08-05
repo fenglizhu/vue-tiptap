@@ -1,4 +1,4 @@
-export const renderElement = ({ type, props = {} }: any, container: { appendChild: (arg0: any) => void; }) => {
+export const renderElement = ({ type, props = {} }: any, container: { appendChild: (arg0: any) => void; }): void => {
   const isTextElement = !type;
   const element = isTextElement
     ? document.createTextNode('')
@@ -27,4 +27,6 @@ export const renderElement = ({ type, props = {} }: any, container: { appendChil
     );
 
   container.appendChild(element);
+  
+  return element
 };

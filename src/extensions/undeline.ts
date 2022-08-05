@@ -10,6 +10,7 @@ export default class Undeline {
     const menusOptions: MenuOptions = {
       showMenu: showMenu,
       toolTips: toolTips,
+      dataNeType: 'underline',
       toggleCommand: function () {
         this.editor.commands.toggleUnderline();
       }

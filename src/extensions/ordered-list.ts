@@ -12,6 +12,7 @@ export default class OrderedList {
     const menusOptions: MenuOptions = {
       showMenu: showMenu,
       toolTips: toolTips,
+      dataNeType: 'orderedList',
       toggleCommand: function () {
         this.editor.commands.toggleOrderedList();
       }

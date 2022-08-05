@@ -11,6 +11,7 @@ export default class BulletList {
     const menusOptions: MenuOptions = {
       showMenu: showMenu,
       toolTips: toolTips,
+      dataNeType: 'bulletList',
       toggleCommand: function () {
         this.editor.commands.toggleBulletList();
       }

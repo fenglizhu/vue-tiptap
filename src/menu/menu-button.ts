@@ -1,6 +1,7 @@
 import { HTMLElementEvent } from "../types";
 import { renderElement } from "./render-dom";
 import { removeTabClass } from "./tab-operation";
+import { Editor } from "@tiptap/core";
 
 interface Menuoption {
   [x: string]: any;
@@ -20,14 +21,15 @@ interface DOM {
 
 export class MenuButton{
   dropdownShow: boolean;
+  element!: void;
+  options: Menuoption;
   constructor(options: Menuoption) {
     this.dropdownShow = false;
-    this.createButton(options);
+    this.options = options
+    this.createButton(options)
   }
 
   public createButton(options: Menuoption) {
-    console.log(options);
-    
     const { toggleCommand, toolTips, dropdown, dataNeType } = options
     const children = dropdown && dropdown.map(item=> {
       return this.domJson({
@@ -40,8 +42,7 @@ export class MenuButton{
         }
       })
     }) || []
-    const _this = this;
-    const myElement: Record<string, any> = {
+    const elementMap = {
       type: 'div',
       props: {
         type: 'div',
@@ -81,9 +82,9 @@ export class MenuButton{
         propsNodeValue: '',
         children: children
       })
-      myElement.props.children.push(child)
+      elementMap.props.children.push(child)
     }
-    renderElement(myElement, document.querySelector('#zero-editor-menu') as HTMLElement);
+    this.element = renderElement(elementMap, document.querySelector('#zero-editor-menu') as HTMLElement);
   }
 
   /**
@@ -100,5 +101,19 @@ export class MenuButton{
         children
       }
     }
+  }
+
+  /**
+   * setActiveMenus
+   */
+   public setActiveMenus(editor: Editor) {
+    const dataNeType = this.options.dataNeType
+    const isActiveMenu: HTMLElement = document.querySelector(`.editor-menu-item[data-ne-type="${dataNeType}"]`) as HTMLElement
+    if (editor.isActive(dataNeType)) {
+      isActiveMenu && isActiveMenu.classList.add('selected')
+    } else {
+      isActiveMenu && isActiveMenu.classList.remove('selected')
+    }
+    
   }
 }

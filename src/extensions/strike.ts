@@ -11,6 +11,7 @@ export default class Strike {
     const menusOptions: MenuOptions = {
       showMenu: showMenu,
       toolTips: toolTips,
+      dataNeType: 'strike',
       toggleCommand: function () {
         this.editor.commands.toggleStrike();
       }

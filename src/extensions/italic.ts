@@ -11,6 +11,7 @@ export default class Italic {
     const menusOptions: MenuOptions = {
       showMenu: showMenu,
       toolTips: toolTips,
+      dataNeType: 'italic',
       toggleCommand: function () {
         this.editor.commands.toggleItalic();
       }
