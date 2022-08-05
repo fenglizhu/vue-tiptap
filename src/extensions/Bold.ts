@@ -11,6 +11,7 @@ export default class Bold {
     const menusOptions: MenuOptions = {
       showMenu: showMenu,
       toolTips: toolTips,
+      dataNeType: 'bold',
       toggleCommand: function () {
         this.editor.commands.toggleBold();
       }

@@ -5,8 +5,10 @@ import { removeTabClass } from "./tab-operation";
 
 export default class MenusBar {
   dropdownShow: boolean;
-  constructor(menus:Extension,editor:Editor) {
+  menuElement: Element;
+  constructor(menus:Extension, editor:Editor, menuElement: Element) {
     this.dropdownShow = false;
+    this.menuElement = menuElement;
     this.initMenus(menus);
     this.hideDropdown();
   }
@@ -16,11 +18,7 @@ export default class MenusBar {
    */
   public initMenus(menus: Extension | any) {
     menus.forEach((element: any) => {
-      new MenuButton({
-        toggleCommand: element.menusOptions.toggleCommand,
-        toolTips: element.menusOptions.toolTips,
-        dropdown: element.menusOptions.dropdown
-      })
+      new MenuButton(element.menusOptions)
     });
   }
 

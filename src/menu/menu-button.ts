@@ -3,6 +3,7 @@ import { renderElement } from "./render-dom";
 import { removeTabClass } from "./tab-operation";
 
 interface Menuoption {
+  [x: string]: any;
   toggleCommand?: Function,
   toolTips: string,
   dropdown: string[]
@@ -19,21 +20,20 @@ interface DOM {
 
 export class MenuButton{
   dropdownShow: boolean;
-  constructor({
-    toggleCommand,
-    toolTips,
-    dropdown
-  }: Menuoption) {
+  constructor(options: Menuoption) {
     this.dropdownShow = false;
-    this.createButton(toggleCommand, toolTips, dropdown);
+    this.createButton(options);
   }
 
-  public createButton(toggleCommand: Function | undefined, toolTips: string, dropdown: string[]) {
+  public createButton(options: Menuoption) {
+    console.log(options);
+    
+    const { toggleCommand, toolTips, dropdown, dataNeType } = options
     const children = dropdown && dropdown.map(item=> {
       return this.domJson({
         type: 'div', 
         propsTypp:'div',
-        propsClassName: 'btn',
+        propsClassName: 'editor-menu-tab-item',
         propsNodeValue: item,
         setData: {
           'data-attr': item,
@@ -46,6 +46,9 @@ export class MenuButton{
       props: {
         type: 'div',
         className: 'editor-menu-item',
+        setData: {
+          'data-ne-type': dataNeType || '',
+        },
         onClick: function(pointerEvent: HTMLElementEvent<HTMLElement>) {
           if(dropdown && pointerEvent.target.classList.contains('editor-menu-item')) {
               // 移除其他的面板

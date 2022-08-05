@@ -13,14 +13,9 @@ export const renderElement = ({ type, props = {} }: any, container: { appendChil
   Object.keys(props).forEach(p => {
     if (isAttribute(p)) element[p] = props[p];
     if(isSetData(p)) {
-      // console.log(333);
-      
       for (const key in props[p]) {
-        // console.log(key);
-        
         element.setAttribute(key, props[p][key])
       }
-      
     }
     if (!isTextElement && isListener(p))
       element.addEventListener(p.toLowerCase().slice(2), props[p]);
