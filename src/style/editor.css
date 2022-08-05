@@ -17,7 +17,7 @@
   background: white;
 }
 .zero-editor-container p {
-  margin: 0;
+  margin-bottom: 10px;
 }
 /* menu */
 .zero-editor-menu {
@@ -34,12 +34,17 @@
   cursor: pointer;
   margin-right: 10px;
   border-radius: 6px;
-  padding: 2px 4px;
+  padding: 4px;
   font-size: 12px;
   transition: .3s;
 }
+.editor-menu-item .svg-icon{
+  display: block;
+  width: 1rem;
+}
 .editor-menu-item.selected{
-  background: #f4f4f5;
+  border-radius: 50%;
+  background: #ececff;
 }
 .editor-menu-tab{
   display: none;
@@ -82,7 +87,7 @@
   left: 50%;
   padding: 0 10px;
   border-radius: 4px;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.8);
   color: white;
   word-break: keep-all;
   transform: translate(-50%, 0px);
@@ -93,7 +98,7 @@
   top: 24px;
   left: 50%;
   content: '';
-  border: 5px solid rgba(0,0,0,0.5);
+  border: 5px solid rgba(0,0,0,0.8);
   border-left-color: transparent;
   border-bottom-color: transparent;
   border-right-color: transparent;
@@ -104,9 +109,43 @@
   opacity: 1;
 }
 
+
+
+.btn{
+  position: relative;
+}
+.btn-children {
+  position: absolute;
+  right: 50px;
+  /* top: 0; */
+  z-index: 999;
+  background-color: aquamarine;
+}
+
+.ProseMirror blockquote{
+  padding-left: 10px;
+  margin: 10px 0;
+  border-left: 2px solid #D8DAD9;
+  color: #8b8b8b;
+}
+.ProseMirror pre{
+  padding: 0 4px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  background: #EFF0F0;
+  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace, Roboto, RobotoNum, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Segoe UI';
+}
+.ProseMirror code{
+  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace, Roboto, RobotoNum, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Segoe UI';
+}
+
+.ProseMirror ol, .ProseMirror ul{
+  margin-left: 16px;
+}
 ul[data-type="taskList"] {
   list-style: none;
   padding: 0;
+  margin-left: 0;
 }
 ul[data-type="taskList"] p {
   margin: 0;
@@ -121,15 +160,4 @@ ul[data-type="taskList"] li > label {
 }
 ul[data-type="taskList"] li > div {
   flex: 1 1 auto;
-}
-
-.btn{
-  position: relative;
-}
-.btn-children {
-  position: absolute;
-  right: 50px;
-  /* top: 0; */
-  z-index: 999;
-  background-color: aquamarine;
 }

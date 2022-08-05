@@ -31,7 +31,7 @@ export default class TextAlign {
       toolTips,
       dropdown: alignments,
       clickParamsKey: 'level',
-      // TODO: 后续需要整理为什么
+      src: 'src/assets/images/align-left.svg',
       toggleCommand: function (pointerEvent: HTMLElementEvent<HTMLElement>) {
         const element: Element = pointerEvent.target;
         const align: string | null = element.getAttribute('data-attr')

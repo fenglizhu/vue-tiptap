@@ -92,6 +92,7 @@ export default class LineHeight {
       showMenu,
       toolTips,
       dropdown: alignments,
+      src: 'src/assets/images/line-height.svg',
       toggleCommand: function (pointerEvent: HTMLElementEvent<HTMLElement>) {
         const element:Element = pointerEvent.target;
         const attr: string | null = element.getAttribute('data-attr')

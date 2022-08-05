@@ -12,6 +12,7 @@ export default class Strike {
       showMenu: showMenu,
       toolTips: toolTips,
       dataNeType: 'strike',
+      src: 'src/assets/images/strikethrough.svg',
       toggleCommand: function () {
         this.editor.commands.toggleStrike();
       }

@@ -13,6 +13,7 @@ export default class CodeBlock {
       showMenu: showMenu,
       toolTips: toolTips,
       dataNeType: 'codeBlock',
+      src: 'src/assets/images/code-s-slash-line.svg',
       toggleCommand: function () {
         this.editor.commands.toggleCodeBlock();
       }

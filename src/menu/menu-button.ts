@@ -2,6 +2,7 @@ import { HTMLElementEvent } from "../types";
 import { renderElement } from "./render-dom";
 import { removeTabClass } from "./tab-operation";
 import { Editor } from "@tiptap/core";
+// import {  } from "../assets/images/bold.svg";
 
 interface Menuoption {
   [x: string]: any;
@@ -12,11 +13,7 @@ interface Menuoption {
 
 interface DOM {
   type: string, 
-  propsTypp:string,
-  propsClassName: string,
-  propsNodeValue: string,
-  setData?: object,
-  children?: Record<string,any>[]
+  props: Record<string, any>
 }
 
 export class MenuButton{
@@ -30,17 +27,20 @@ export class MenuButton{
   }
 
   public createButton(options: Menuoption) {
-    const { toggleCommand, toolTips, dropdown, dataNeType } = options
+    const { toggleCommand, toolTips, dropdown, dataNeType, src } = options
+    
     const children = dropdown && dropdown.map(item=> {
-      return this.domJson({
-        type: 'div', 
-        propsTypp:'div',
-        propsClassName: 'editor-menu-tab-item',
-        propsNodeValue: item,
-        setData: {
-          'data-attr': item,
+      return {
+        type: 'div',
+        props: {
+          type:'div',
+          className: 'editor-menu-tab-item',
+          nodeValue: item,
+          setData: {
+            'data-attr': item,
+          }
         }
-      })
+      }
     }) || []
     const elementMap = {
       type: 'div',
@@ -51,10 +51,12 @@ export class MenuButton{
           'data-ne-type': dataNeType || '',
         },
         onClick: function(pointerEvent: HTMLElementEvent<HTMLElement>) {
-          if(dropdown && pointerEvent.target.classList.contains('editor-menu-item')) {
-              // 移除其他的面板
-            removeTabClass(pointerEvent.target)
-            pointerEvent.target.classList.toggle('display-tab');
+          const parentElement: HTMLElement = pointerEvent.target.parentElement as HTMLElement
+          
+          if(dropdown && parentElement.classList.contains('editor-menu-item')) {
+            // 移除其他的面板
+            removeTabClass(parentElement)
+            parentElement.classList.toggle('display-tab');
           }else {
             removeTabClass()
             // 点击其他也要去掉面板
@@ -62,45 +64,43 @@ export class MenuButton{
           }
           pointerEvent.stopPropagation()
         },
-        nodeValue: toolTips,
+        nodeValue: '',
         children: [
-          this.domJson({
+          {
+            type: 'img', 
+            props:{
+              type: 'img',
+              src,
+              className: 'svg-icon',
+              nodeValue: ''
+            }
+            
+          },
+          {
             type: 'div', 
-            propsTypp:'div',
-            propsClassName: 'editor-menu-tool-tip',
-            propsNodeValue: toolTips
-          })
+            props: {
+              type:'div',
+              className: 'editor-menu-tool-tip',
+              nodeValue: toolTips
+            }
+          }
         ]
       }
     };
 
     if(children.length) {
-      const child = this.domJson({
+      const child = {
         type: 'div', 
-        propsTypp:'div',
-        propsClassName: 'editor-menu-tab',
-        propsNodeValue: '',
-        children: children
-      })
+        props: {
+          type:'div',
+          className: 'editor-menu-tab',
+          nodeValue: '',
+          children: children
+        }
+      }
       elementMap.props.children.push(child)
     }
     this.element = renderElement(elementMap, document.querySelector('#zero-editor-menu') as HTMLElement);
-  }
-
-  /**
-   * domJson
-   */
-  public domJson({ type, propsTypp, propsClassName, propsNodeValue, setData, children }: DOM) {
-    return {
-      type,
-      props: {
-        type: propsTypp,
-        className: propsClassName,
-        nodeValue: propsNodeValue,
-        setData,
-        children
-      }
-    }
   }
 
   /**
@@ -114,6 +114,5 @@ export class MenuButton{
     } else {
       isActiveMenu && isActiveMenu.classList.remove('selected')
     }
-    
   }
 }

@@ -13,6 +13,7 @@ export default class BlockQuote {
       showMenu: showMenu,
       toolTips: toolTips,
       dataNeType: 'blockquote',
+      src: '/src/assets/images/double-quotes-r.svg',
       toggleCommand: function () {
         this.editor.commands.toggleBlockquote();
       }

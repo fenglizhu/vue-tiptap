@@ -12,6 +12,7 @@ export default class Bold {
       showMenu: showMenu,
       toolTips: toolTips,
       dataNeType: 'bold',
+      src: '/src/assets/images/bold.svg',
       toggleCommand: function () {
         this.editor.commands.toggleBold();
       }

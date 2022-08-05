@@ -13,6 +13,7 @@ export default class OrderedList {
       showMenu: showMenu,
       toolTips: toolTips,
       dataNeType: 'orderedList',
+      src: 'src/assets/images/list-ordered.svg',
       toggleCommand: function () {
         this.editor.commands.toggleOrderedList();
       }

@@ -8,11 +8,12 @@ export default class TaskList {
     toolTips = '任务列表'
   }: CoustomOptions = {}) {
     const ZeroTaskList: Record<string, any> = TiptapTaskList.extend()
-
+    // TODO: 
     const menusOptions: MenuOptions = {
       showMenu: showMenu,
       toolTips: toolTips,
       dataNeType: 'taskList',
+      src: 'src/assets/images/task-line.svg',
       toggleCommand: function () {
         this.editor.commands.toggleTaskList();
       }

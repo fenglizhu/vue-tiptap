@@ -22,6 +22,7 @@ export default class Heading {
       hasTab: true,
       dropdown: levels,
       clickParamsKey: 'level',
+      src: 'src/assets/images/heading.svg',
       toggleCommand: function (pointerEvent: HTMLElementEvent<HTMLElement>) {
         const element: Element = pointerEvent.target;
         const attr: string | null = element.getAttribute('data-attr')

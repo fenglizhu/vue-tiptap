@@ -12,6 +12,7 @@ export default class Italic {
       showMenu: showMenu,
       toolTips: toolTips,
       dataNeType: 'italic',
+      src: 'src/assets/images/italic.svg',
       toggleCommand: function () {
         this.editor.commands.toggleItalic();
       }

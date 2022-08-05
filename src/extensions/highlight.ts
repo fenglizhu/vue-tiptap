@@ -34,6 +34,7 @@ export default class Highlight {
       clickParamsKey: 'color',
       dropdown: colors,
       eleAttribute: 'color',
+      src: 'src/assets/images/paint-line.svg',
       toggleCommand: function (pointerEvent: HTMLElementEvent<HTMLElement>) {
         const element:Element = pointerEvent.target;
         const color = element.getAttribute('data-attr')

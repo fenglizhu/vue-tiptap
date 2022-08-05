@@ -12,6 +12,7 @@ export default class BulletList {
       showMenu: showMenu,
       toolTips: toolTips,
       dataNeType: 'bulletList',
+      src: '/src/assets/images/list-unordered.svg',
       toggleCommand: function () {
         this.editor.commands.toggleBulletList();
       }

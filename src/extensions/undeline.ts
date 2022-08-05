@@ -11,6 +11,7 @@ export default class Undeline {
       showMenu: showMenu,
       toolTips: toolTips,
       dataNeType: 'underline',
+      src: 'src/assets/images/underline.svg',
       toggleCommand: function () {
         this.editor.commands.toggleUnderline();
       }
