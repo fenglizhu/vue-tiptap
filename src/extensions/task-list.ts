@@ -15,7 +15,10 @@ export default class TaskList {
       dataNeType: 'taskList',
       src: 'src/assets/images/task-line.svg',
       toggleCommand: function () {
-        this.editor.commands.toggleTaskList();
+        // debugger
+        this.editor.commands.toggleTaskList({
+          lineHeight: 1.5
+        });
       }
     }
 

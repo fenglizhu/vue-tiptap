@@ -24,23 +24,21 @@ const content = `<p>
   </p>`;
 const extensions = [
   new StarterKit(),
+  new Heading(),
   new Bold(),
-  new Highlight(),
   new TextStyle(),
   new Undeline(),
   new Italic(),
   new Strike(),
-  new Blockquote(),
-  new CodeBlock(),
   new Color(),
-  new Heading(),
-  new TextAlign({
-    alignments: ['left', 'center']
-  }),
+  new Highlight(),
+  new TextAlign(),
   new OrderedList(),
   new BulletList(),
   new TaskList(),
   new TaskItem(),
+  new Blockquote(),
+  new CodeBlock(),
   new LineHeight()
 ]
 </script>

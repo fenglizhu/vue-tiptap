@@ -152,6 +152,7 @@ ul[data-type="taskList"] p {
 }
 ul[data-type="taskList"] li {
   display: flex;
+  align-items: center;
 }
 ul[data-type="taskList"] li > label {
   flex: 0 0 auto;
