@@ -1,8 +1,7 @@
-import { HTMLElementEvent } from "../types";
+import { HTMLElementEvent, MenuOptions } from "../types";
 import { renderElement } from "./render-dom";
 import { removeTabClass } from "./tab-operation";
-import { Editor } from "@tiptap/core";
-// import {  } from "../assets/images/bold.svg";
+import { ZeroEditor } from "../core/ZeroEditor";
 
 interface Menuoption {
   [x: string]: any;
@@ -106,10 +105,25 @@ export class MenuButton{
   /**
    * setActiveMenus
    */
-   public setActiveMenus(editor: Editor) {
-    const dataNeType = this.options.dataNeType
+   public setActiveMenus(zeroEditor: ZeroEditor) {
+    const dataNeType:string = this.options.dataNeType;
+    const menuKey:string = this.options.menuType || this.options.dataNeType;
+    const menuBarOption: MenuOptions = zeroEditor.menusBar.menuElementMap[menuKey]?.options;
+    
+    if (menuBarOption.activeIsObject && menuBarOption.dropdown) {
+      const dropdown = menuBarOption.dropdown;
+      const one = dropdown.find((item: number| string) => {
+        return zeroEditor.editor.isActive({[dataNeType]: item})
+      })
+      this.activeMenu(dataNeType, !!one);
+      return
+    }
+    this.activeMenu(dataNeType, zeroEditor.editor.isActive(dataNeType))
+  }
+
+  private activeMenu(dataNeType: string, isActive: boolean) {
     const isActiveMenu: HTMLElement = document.querySelector(`.editor-menu-item[data-ne-type="${dataNeType}"]`) as HTMLElement
-    if (editor.isActive(dataNeType)) {
+    if (isActive) {
       isActiveMenu && isActiveMenu.classList.add('selected')
     } else {
       isActiveMenu && isActiveMenu.classList.remove('selected')

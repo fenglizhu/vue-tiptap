@@ -10,10 +10,9 @@ export interface MenuOptions {
   showMenu?: boolean,
   toolTips?: string,
   hasTab?: boolean,
-  clickParamsKey?: string,
   toggleCommand?: Function,
   dropdown?: SN[],
-  eleAttribute?: string
+  menuType?: string
 }
 
 export type HTMLElementEvent<T extends HTMLElement> = Event & {

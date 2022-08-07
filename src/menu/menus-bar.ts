@@ -2,6 +2,7 @@
 import { Extension, Editor } from "@tiptap/core";
 import { MenuButton } from "./menu-button";
 import { removeTabClass } from "./tab-operation";
+import { ZeroEditor } from "../core/ZeroEditor";
 
 export default class MenusBar {
   dropdownShow: boolean;
@@ -27,9 +28,9 @@ export default class MenusBar {
   /**
    * setActiveMenus
    */
-  public setActiveMenus(editor: Editor) {
+  public setActiveMenus(zeroEditor: ZeroEditor) {
     for (const key in this.menuElementMap) {
-      this.menuElementMap[key].setActiveMenus(editor)
+      this.menuElementMap[key].setActiveMenus(zeroEditor)
     }
     
   }

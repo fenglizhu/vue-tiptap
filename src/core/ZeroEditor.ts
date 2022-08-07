@@ -2,7 +2,7 @@ import { Editor } from '@tiptap/core'
 import { EditorOptions } from '@tiptap/core/src/types'
 import MenusBar from "../menu/menus-bar";
 
-type EditorType =
+export type EditorType =
   | Editor
   | any
 
@@ -44,7 +44,7 @@ export class ZeroEditor {
     const editor= new Editor({
       ...this.options as any,
       onSelectionUpdate: () => {
-        this.menusBar.setActiveMenus(editor);
+        this.menusBar.setActiveMenus(this);
       }
     });
     this.editor = editor;

@@ -21,7 +21,6 @@ export default class Heading {
       toolTips: toolTips,
       hasTab: true,
       dropdown: levels,
-      clickParamsKey: 'level',
       dataNeType: 'heading',
       src: 'src/assets/images/heading.svg',
       toggleCommand: function (pointerEvent: HTMLElementEvent<HTMLElement>) {

@@ -93,15 +93,13 @@ export default class LineHeight {
       toolTips,
       dropdown: alignments,
       dataNeType: 'lineHeight',
+      activeIsObject: true,
       src: 'src/assets/images/line-height.svg',
       toggleCommand: function (pointerEvent: HTMLElementEvent<HTMLElement>) {
         const element:Element = pointerEvent.target;
         const attr: string | null = element.getAttribute('data-attr')
         const lineHeight: number = Number(attr);
         this.editor.commands.setLineHeight(lineHeight);
-        console.log(this.editor.isActive({lineHeight: 3}));
-        console.log(this.editor.isActive('lineHeight'));
-        
       }
     }
     ZeroLineHeight.menusOptions = menusOptions;

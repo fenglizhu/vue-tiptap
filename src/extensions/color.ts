@@ -19,7 +19,7 @@ export default class Color {
       toolTips: toolTips,
       hasTab: true,
       dropdown: colors,
-      eleAttribute: 'color',
+      menuType: 'color',
       dataNeType: 'textStyle',
       src: 'src/assets/images/font-color.svg',
       toggleCommand: function (pointerEvent: HTMLElementEvent<HTMLElement>) {

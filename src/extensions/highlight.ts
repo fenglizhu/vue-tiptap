@@ -31,10 +31,8 @@ export default class Highlight {
       showMenu: showMenu,
       toolTips: toolTips,
       hasTab: true,
-      clickParamsKey: 'color',
       dropdown: colors,
       dataNeType: 'highlight',
-      eleAttribute: 'color',
       src: 'src/assets/images/paint-line.svg',
       toggleCommand: function (pointerEvent: HTMLElementEvent<HTMLElement>) {
         const element:Element = pointerEvent.target;
