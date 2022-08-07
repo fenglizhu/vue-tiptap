@@ -33,6 +33,7 @@ export default class Highlight {
       hasTab: true,
       clickParamsKey: 'color',
       dropdown: colors,
+      dataNeType: 'highlight',
       eleAttribute: 'color',
       src: 'src/assets/images/paint-line.svg',
       toggleCommand: function (pointerEvent: HTMLElementEvent<HTMLElement>) {

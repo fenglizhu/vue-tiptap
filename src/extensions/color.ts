@@ -20,7 +20,7 @@ export default class Color {
       hasTab: true,
       dropdown: colors,
       eleAttribute: 'color',
-      dataNeType: 'color',
+      dataNeType: 'textStyle',
       src: 'src/assets/images/font-color.svg',
       toggleCommand: function (pointerEvent: HTMLElementEvent<HTMLElement>) {
         const element:Element = pointerEvent.target;

@@ -31,11 +31,14 @@ export default class TextAlign {
       toolTips,
       dropdown: alignments,
       clickParamsKey: 'level',
+      dataNeType: 'textAlign',
       src: 'src/assets/images/align-left.svg',
       toggleCommand: function (pointerEvent: HTMLElementEvent<HTMLElement>) {
         const element: Element = pointerEvent.target;
         const align: string | null = element.getAttribute('data-attr')
         this.editor.commands.setTextAlign(align)
+        console.log(this.editor.isActive());
+        
       }
     }
 
