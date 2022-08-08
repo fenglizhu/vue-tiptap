@@ -34,7 +34,16 @@ export default class Highlight {
       hasTab: true,
       dropdown: colors,
       dataNeType: 'highlight',
+      activeIsObject: true,
       src: 'src/assets/images/paint-line.svg',
+      setActiveRules: (color: string) => {
+        return [
+          'highlight',
+          {
+            color
+          }
+        ]
+      },
       htmlOption: {
         type: HTML_TYPE.STYLE,
         styleName: STYLE_NAME.BACKGROUND_COLOR,

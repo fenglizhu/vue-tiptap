@@ -40,6 +40,11 @@ export default class TextAlign {
       dropdown: alignments,
       dataNeType: 'textAlign',
       activeIsObject: true,
+      setActiveRules: (textAlign: string) => {
+        return [
+          { textAlign }
+        ]
+      },
       htmlOption: {
         type: HTML_TYPE.HTML,
         tagAndText: alignments.map((item: string) => {

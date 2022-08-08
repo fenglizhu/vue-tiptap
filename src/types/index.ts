@@ -16,7 +16,8 @@ export interface MenuOptions {
   menuType?: string,
   activeIsObject?: boolean,
   src?: string,
-  htmlOption?: Record<string, any>
+  htmlOption?: Record<string, any>,
+  setActiveRules?: Function
 }
 
 export type HTMLElementEvent<T extends HTMLElement> = Event & {

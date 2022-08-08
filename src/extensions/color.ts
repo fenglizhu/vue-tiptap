@@ -22,7 +22,16 @@ export default class Color {
       dropdown: colors,
       menuType: 'color',
       dataNeType: 'textStyle',
+      activeIsObject: true,
       src: 'src/assets/images/font-color.svg',
+      setActiveRules: (color: string) => {
+        return [
+          'textStyle',
+          {
+            color
+          }
+        ]
+      },
       htmlOption: {
         type: HTML_TYPE.STYLE,
         styleName: STYLE_NAME.BACKGROUND_COLOR,

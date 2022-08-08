@@ -41,23 +41,11 @@ export class MenuButton{
         },
         onClick: function(pointerEvent: HTMLElementEvent<HTMLElement>) {
           const parentElement: HTMLElement = pointerEvent.target.parentElement as HTMLElement
-          // console.log(pointerEvent.currentTarget);
           if (dropdown) {
             removeTabClass(parentElement)
             pointerEvent.currentTarget.classList.toggle('display-tab')
           }
-          // console.log(toggleCommand);
-          
           toggleCommand && toggleCommand(pointerEvent)
-          // if(dropdown && parentElement.classList.contains('editor-menu-item')) {
-          //   // 移除其他的面板
-          //   removeTabClass(parentElement)
-          //   parentElement.classList.toggle('display-tab');
-          // }else {
-          //   removeTabClass()
-          //   // 点击其他也要去掉面板
-          //   toggleCommand && toggleCommand(pointerEvent)
-          // }
           pointerEvent.stopPropagation()
         },
         nodeValue: '',
@@ -82,7 +70,6 @@ export class MenuButton{
         ]
       }
     };
-
     
     this.element = renderElement(elementMap, document.querySelector('#zero-editor-menu') as HTMLElement);
     if(dropdown && htmlOption) {
@@ -90,6 +77,14 @@ export class MenuButton{
       this.element!.appendChild(tapPane)
     }
   }
+
+  // editor.isActive('textStyle', { color: '#958DF1' })
+  // editor.isActive('highlight', { color: '#958DF1' })
+  // editor.isActive('heading',   { level: 1 })
+  
+  // editor.isActive({ textAlign: 'left' })
+  // editor.isActive({ lineheight: 1.5 })
+
 
   /**
    * setActiveMenus
@@ -99,14 +94,25 @@ export class MenuButton{
     const menuKey:string = this.options.menuType || this.options.dataNeType;
     const menuBarOption: MenuOptions = zeroEditor.menusBar.menuElementMap[menuKey]?.options;
     
-    if (menuBarOption.activeIsObject && menuBarOption.dropdown) {
-      const dropdown = menuBarOption.dropdown;
-      const one = dropdown.find((item: number| string) => {
-        return zeroEditor.editor.isActive({[dataNeType]: item})
-      })
-      this.activeMenu(dataNeType, !!one);
+    if(menuBarOption.activeIsObject) {
+      // console.log(dataNeType);
+      // setActiveRules
+      if(menuBarOption.dropdown && menuBarOption.setActiveRules) {
+        const dropdown = menuBarOption.dropdown;
+        const one = dropdown.find((item: number | string) => {
+          // console.log(item);
+          const params = menuBarOption.setActiveRules(item)
+          return zeroEditor.editor.isActive(...params)
+        })
+
+        console.log(dataNeType, one);
+        
+        this.activeMenu(dataNeType, !!one);
+      }
+      
       return
     }
+
     this.activeMenu(dataNeType, zeroEditor.editor.isActive(dataNeType))
   }
 

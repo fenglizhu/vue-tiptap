@@ -96,6 +96,11 @@ export default class LineHeight {
       dataNeType: 'lineHeight',
       activeIsObject: true,
       src: 'src/assets/images/line-height.svg',
+      setActiveRules: (lineheight: string) => {
+        return [
+          { lineheight }
+        ]
+      },
       htmlOption: {
         type: HTML_TYPE.HTML,
         tagAndText: alignments.map((item: number) => {

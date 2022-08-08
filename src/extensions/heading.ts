@@ -22,7 +22,16 @@ export default class Heading {
       hasTab: true,
       dropdown: levels,
       dataNeType: 'heading',
+      activeIsObject: true,
       src: 'src/assets/images/heading.svg',
+      setActiveRules: (level: number) => {
+        return [
+          'heading',
+          {
+            level
+          }
+        ]
+      },
       htmlOption: {
         type: HTML_TYPE.HTML,
         tagAndText: levels.map((item: number)=> {

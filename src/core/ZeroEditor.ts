@@ -36,15 +36,22 @@ export class ZeroEditor {
   containerElementOption!: { class: string; };
   elementParentOption!: { class: string; };
   menuElement!: Element;
+  selectionTimer: number | null;
 
   constructor(options: Partial<EditorOptions> = {}) {
+    this.selectionTimer = null;
     this.setOptions(options);
     this.setElementOption();
 
     const editor= new Editor({
       ...this.options as any,
       onSelectionUpdate: () => {
-        this.menusBar.setActiveMenus(this);
+        if(this.selectionTimer) {
+          clearTimeout(this.selectionTimer)
+        }
+        this.selectionTimer = setTimeout(() => {
+          this.menusBar.setActiveMenus(this);
+        }, 500);
       }
     });
     this.editor = editor;
