@@ -6,13 +6,17 @@ export interface CoustomOptions {
 type SN = number | string
 
 export interface MenuOptions {
-  [x: string]: any;
+  editor?: any;
   showMenu?: boolean,
   toolTips?: string,
   hasTab?: boolean,
+  dataNeType?: string,
   toggleCommand?: Function,
   dropdown?: SN[],
-  menuType?: string
+  menuType?: string,
+  activeIsObject?: boolean,
+  src?: string,
+  htmlOption?: Record<string, any>
 }
 
 export type HTMLElementEvent<T extends HTMLElement> = Event & {

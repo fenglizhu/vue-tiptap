@@ -1,4 +1,5 @@
 import{ Heading as TiptapHeading }from '@tiptap/extension-heading'
+import { HTML_TYPE } from '../constant'
 import { CoustomOptions, MenuOptions, HTMLElementEvent } from '../types'
 
 export type Level = 1 | 2 | 3 | 4 | 5 | 6
@@ -13,7 +14,6 @@ export default class Heading {
     toolTips = '标题',
     levels = [1, 2, 3, 4, 5, 6]
   }: HeadingOption = {}) {
-    
     const ZeroHeading: Record<string, any> = TiptapHeading.extend()
     
     const menusOptions: MenuOptions = {
@@ -23,6 +23,17 @@ export default class Heading {
       dropdown: levels,
       dataNeType: 'heading',
       src: 'src/assets/images/heading.svg',
+      htmlOption: {
+        type: HTML_TYPE.HTML,
+        tagAndText: levels.map((item: number)=> {
+          const tag = `h${item}`
+          return {
+            tag,
+            text: `标题${item}`,
+            dataAttr: item,
+          }
+        })
+      },
       toggleCommand: function (pointerEvent: HTMLElementEvent<HTMLElement>) {
         const element: Element = pointerEvent.target;
         const attr: string | null = element.getAttribute('data-attr')

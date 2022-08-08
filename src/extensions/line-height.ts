@@ -1,5 +1,6 @@
 import { Extension } from '@tiptap/core'
 import { NodeType, MarkType } from 'prosemirror-model'
+import { HTML_TYPE } from '../constant'
 import { CoustomOptions, MenuOptions, HTMLElementEvent } from '../types'
 
 interface TextAlignOptions extends MenuOptions {
@@ -95,6 +96,16 @@ export default class LineHeight {
       dataNeType: 'lineHeight',
       activeIsObject: true,
       src: 'src/assets/images/line-height.svg',
+      htmlOption: {
+        type: HTML_TYPE.HTML,
+        tagAndText: alignments.map((item: number) => {
+          return {
+            tag: 'div',
+            text: item,
+            dataAttr: item
+          }
+        })
+      },
       toggleCommand: function (pointerEvent: HTMLElementEvent<HTMLElement>) {
         const element:Element = pointerEvent.target;
         const attr: string | null = element.getAttribute('data-attr')

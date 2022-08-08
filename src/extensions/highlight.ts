@@ -1,6 +1,7 @@
 
 import { mergeAttributes } from '@tiptap/core'
 import { Highlight as TiptapHighlight } from "@tiptap/extension-highlight";
+import { HTML_TYPE, STYLE_NAME } from '../constant';
 import { CoustomOptions, MenuOptions, HTMLElementEvent } from '../types'
 import { Colors } from "../types/color";
 
@@ -34,6 +35,12 @@ export default class Highlight {
       dropdown: colors,
       dataNeType: 'highlight',
       src: 'src/assets/images/paint-line.svg',
+      htmlOption: {
+        type: HTML_TYPE.STYLE,
+        styleName: STYLE_NAME.BACKGROUND_COLOR,
+        tagAndText: colors,
+        tabClassName: 'editor-menu-tab-color'
+      },
       toggleCommand: function (pointerEvent: HTMLElementEvent<HTMLElement>) {
         const element:Element = pointerEvent.target;
         const color = element.getAttribute('data-attr')

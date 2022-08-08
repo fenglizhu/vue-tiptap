@@ -1,4 +1,5 @@
 import{ Color as TiptapColor }from '@tiptap/extension-color'
+import { HTML_TYPE, STYLE_NAME } from '../constant';
 import { CoustomOptions, MenuOptions, HTMLElementEvent } from '../types'
 import { Colors } from "../types/color";
 
@@ -22,6 +23,12 @@ export default class Color {
       menuType: 'color',
       dataNeType: 'textStyle',
       src: 'src/assets/images/font-color.svg',
+      htmlOption: {
+        type: HTML_TYPE.STYLE,
+        styleName: STYLE_NAME.BACKGROUND_COLOR,
+        tagAndText: colors,
+        tabClassName: 'editor-menu-tab-color'
+      },
       toggleCommand: function (pointerEvent: HTMLElementEvent<HTMLElement>) {
         const element:Element = pointerEvent.target;
         const color = element.getAttribute('data-attr')

@@ -1,11 +1,19 @@
 import { CoustomOptions, MenuOptions, HTMLElementEvent } from '../types'
 import{ TextAlign as TiptapTextAlign }from '@tiptap/extension-text-align'
+import { HTML_TYPE } from '../constant';
 
 interface TextAlignOptions extends MenuOptions {
   types?: string[],
   alignments?: string[],
   defaultAlignment?: string,
 }
+
+const alignmentsMap = new Map([
+  ['left', '左对齐'],
+  ['center', '居中对齐'],
+  ['right', '右对齐'],
+  ['justify', '两端对齐']
+])
 
 export default class TextAlign {
   extension: Record<string, any>;
@@ -32,9 +40,21 @@ export default class TextAlign {
       dropdown: alignments,
       dataNeType: 'textAlign',
       activeIsObject: true,
+      htmlOption: {
+        type: HTML_TYPE.HTML,
+        tagAndText: alignments.map((item: string) => {
+          return {
+            tag: 'div',
+            text: alignmentsMap.get(item),
+            dataAttr: item,
+          }
+        })
+      },
       src: 'src/assets/images/align-left.svg',
       toggleCommand: function (pointerEvent: HTMLElementEvent<HTMLElement>) {
         const element: Element = pointerEvent.target;
+        console.log(element);
+        
         const align: string | null = element.getAttribute('data-attr')
         this.editor.commands.setTextAlign(align);
       }

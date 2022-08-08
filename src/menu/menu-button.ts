@@ -1,5 +1,5 @@
 import { HTMLElementEvent, MenuOptions } from "../types";
-import { renderElement } from "./render-dom";
+import { renderElement, renderTabDom } from "./render-dom";
 import { removeTabClass } from "./tab-operation";
 import { ZeroEditor } from "../core/ZeroEditor";
 
@@ -15,9 +15,11 @@ interface DOM {
   props: Record<string, any>
 }
 
+type HTMLElement_String = HTMLElement | string | undefined
+
 export class MenuButton{
   dropdownShow: boolean;
-  element!: void;
+  element!: Element | void;
   options: Menuoption;
   constructor(options: Menuoption) {
     this.dropdownShow = false;
@@ -26,21 +28,9 @@ export class MenuButton{
   }
 
   public createButton(options: Menuoption) {
-    const { toggleCommand, toolTips, dropdown, dataNeType, src } = options
-    
-    const children = dropdown && dropdown.map(item=> {
-      return {
-        type: 'div',
-        props: {
-          type:'div',
-          className: 'editor-menu-tab-item',
-          nodeValue: item,
-          setData: {
-            'data-attr': item,
-          }
-        }
-      }
-    }) || []
+
+    const { toggleCommand, toolTips, dropdown, dataNeType, src, htmlOption } = options;
+
     const elementMap = {
       type: 'div',
       props: {
@@ -51,16 +41,23 @@ export class MenuButton{
         },
         onClick: function(pointerEvent: HTMLElementEvent<HTMLElement>) {
           const parentElement: HTMLElement = pointerEvent.target.parentElement as HTMLElement
-          
-          if(dropdown && parentElement.classList.contains('editor-menu-item')) {
-            // 移除其他的面板
+          // console.log(pointerEvent.currentTarget);
+          if (dropdown) {
             removeTabClass(parentElement)
-            parentElement.classList.toggle('display-tab');
-          }else {
-            removeTabClass()
-            // 点击其他也要去掉面板
-            toggleCommand && toggleCommand(pointerEvent)
+            pointerEvent.currentTarget.classList.toggle('display-tab')
           }
+          // console.log(toggleCommand);
+          
+          toggleCommand && toggleCommand(pointerEvent)
+          // if(dropdown && parentElement.classList.contains('editor-menu-item')) {
+          //   // 移除其他的面板
+          //   removeTabClass(parentElement)
+          //   parentElement.classList.toggle('display-tab');
+          // }else {
+          //   removeTabClass()
+          //   // 点击其他也要去掉面板
+          //   toggleCommand && toggleCommand(pointerEvent)
+          // }
           pointerEvent.stopPropagation()
         },
         nodeValue: '',
@@ -73,7 +70,6 @@ export class MenuButton{
               className: 'svg-icon',
               nodeValue: ''
             }
-            
           },
           {
             type: 'div', 
@@ -87,19 +83,12 @@ export class MenuButton{
       }
     };
 
-    if(children.length) {
-      const child = {
-        type: 'div', 
-        props: {
-          type:'div',
-          className: 'editor-menu-tab',
-          nodeValue: '',
-          children: children
-        }
-      }
-      elementMap.props.children.push(child)
-    }
+    
     this.element = renderElement(elementMap, document.querySelector('#zero-editor-menu') as HTMLElement);
+    if(dropdown && htmlOption) {
+      const tapPane = renderTabDom(htmlOption) as Node
+      this.element!.appendChild(tapPane)
+    }
   }
 
   /**
@@ -121,6 +110,11 @@ export class MenuButton{
     this.activeMenu(dataNeType, zeroEditor.editor.isActive(dataNeType))
   }
 
+  /**
+   * 激活菜单样式
+   * @param dataNeType 菜单类型
+   * @param isActive 
+   */
   private activeMenu(dataNeType: string, isActive: boolean) {
     const isActiveMenu: HTMLElement = document.querySelector(`.editor-menu-item[data-ne-type="${dataNeType}"]`) as HTMLElement
     if (isActive) {
