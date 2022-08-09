@@ -2,18 +2,15 @@ import { HTML_TYPE, MENU_ATTR_NAME, TAB_CLASS_NAME, TAB_ITEM_CLASS_NAME } from "
 import { ReturnHTMLElement } from "../types";
 import { createElement, setAttribute, setClassName, setStyleProperty } from "./dom";
 
+
+
 export const renderElement = ({ type, props = {} }: any, container: { appendChild: (arg0: any) => void; }): void => {
   const isTextElement = !type;
   const element = isTextElement
     ? document.createTextNode('')
     : document.createElement(type)
   element.innerText = props.nodeValue;
-  
-  const isListener = (p: string) => p.startsWith('on');
-  const isSetData = (p: string) => p === 'setData';
-  const isAttribute = (p: string) => !isListener(p) && !isSetData(p) && p !== 'children';
 
-  
   Object.keys(props).forEach(p => {
     if (isAttribute(p)) element[p] = props[p];
     if(isSetData(p)) {
@@ -21,20 +18,25 @@ export const renderElement = ({ type, props = {} }: any, container: { appendChil
         setAttribute(element, key, props[p][key]);
       }
     }
-    if (!isTextElement && isListener(p))
+    if (!isTextElement && isListener(p)) {
       element.addEventListener(p.toLowerCase().slice(2), props[p]);
+    }
   });
 
-  if (!isTextElement && props.children && props.children.length)
+  if (!isTextElement && props.children && props.children.length){
     props.children.forEach((childElement: { type: any; props?: {} | undefined; }) =>
       renderElement(childElement, element)
     );
-
+  } 
+  
   container.appendChild(element);
   
   return element
 };
 
+const isListener = (p: string) => p.startsWith('on');
+const isSetData = (p: string) => p === 'setData';
+const isAttribute = (p: string) => !isListener(p) && !isSetData(p) && p !== 'children';
 
 export const renderTabElement = (htmlOption: Record<string, any>) : ReturnHTMLElement => {
   if(!htmlOption) {

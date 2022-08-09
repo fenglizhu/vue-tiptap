@@ -7,7 +7,6 @@ export type EditorType =
   | Editor
   | any
 
-
 export class ZeroEditor {
   menusBar!: MenusBar;
   editor: EditorType
