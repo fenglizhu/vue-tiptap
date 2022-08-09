@@ -1,7 +1,8 @@
 import { HTMLElementEvent, MenuOptions, SN } from "../types";
-import { renderElement, renderTabDom } from "./render-dom";
+import { renderElement, renderTabDom } from "../utils/render-dom";
 import { removeTabClass } from "./tab-operation";
 import { ZeroEditor } from "../core/ZeroEditor";
+import { addClass, querySelector, removeClass } from "../utils/dom";
 
 interface Menuoption {
   [x: string]: any;
@@ -43,6 +44,8 @@ export class MenuButton{
             removeTabClass(parentElement)
             pointerEvent.currentTarget.classList.toggle('display-tab')
           }
+          // TODO:点击字体颜色和背景颜色切换BUG
+          
           toggleCommand && toggleCommand(pointerEvent)
           pointerEvent.stopPropagation()
         },
@@ -69,20 +72,12 @@ export class MenuButton{
       }
     };
     
-    this.element = renderElement(elementMap, document.querySelector('#zero-editor-menu') as HTMLElement);
+    this.element = renderElement(elementMap, querySelector('#zero-editor-menu'));
     if(dropdown && htmlOption) {
       const tapPane = renderTabDom(htmlOption) as Node
       this.element!.appendChild(tapPane)
     }
   }
-
-  // editor.isActive('textStyle', { color: '#958DF1' })
-  // editor.isActive('highlight', { color: '#958DF1' })
-  // editor.isActive('heading',   { level: 1 })
-  
-  // editor.isActive({ textAlign: 'left' })
-  // editor.isActive({ lineheight: 1.5 })
-
 
   /**
    * setActiveMenus
@@ -105,7 +100,7 @@ export class MenuButton{
         }
       }
 
-      one && this.setTabPaneActive(dataNeType, one)
+      this.setTabPaneActive(dataNeType, one)
 
       this.activeMenu(dataNeType, !!one);
       return
@@ -117,17 +112,18 @@ export class MenuButton{
    * 激活菜单下拉框样式
    */
   setTabPaneActive(dataNeType: string, one: SN) {
-    const isActiveMenu: HTMLElement = document.querySelector(`.editor-menu-item[data-ne-type="${dataNeType}"]`) as HTMLElement;
 
-    const allTab = isActiveMenu.querySelectorAll('.editor-menu-tab-item');
-    allTab.forEach(element => {
-      element.classList.remove('selected')
-    });
+    const isActiveMenu: HTMLElement = querySelector(`.editor-menu-item[data-ne-type="${dataNeType}"]`);
 
-    const isActivepane = isActiveMenu.querySelector(`.editor-menu-tab-item[data-attr="${one}"]`)
-    isActivepane && isActivepane.classList.add('selected')
+    // 删除之前已经有的激活项
+    const lastSelectedBox: HTMLElement = querySelector('.selected', isActiveMenu);
+    removeClass(lastSelectedBox, 'selected');
 
-    // TODO:没有取消上一次的
+    // 添加新的激活项
+    if(one) {
+      const isActivepane = querySelector(`.editor-menu-tab-item[data-attr="${one}"]`, isActiveMenu);
+      addClass(isActivepane, 'selected');
+    }
   }
 
   /**
@@ -136,11 +132,11 @@ export class MenuButton{
    * @param isActive 
    */
   private activeMenu(dataNeType: string, isActive: boolean) {
-    const isActiveMenu: HTMLElement = document.querySelector(`.editor-menu-item[data-ne-type="${dataNeType}"]`) as HTMLElement
+    const isActiveMenu: HTMLElement = querySelector(`.editor-menu-item[data-ne-type="${dataNeType}"]`)
     if (isActive) {
-      isActiveMenu && isActiveMenu.classList.add('selected')
+      addClass(isActiveMenu, 'selected')
     } else {
-      isActiveMenu && isActiveMenu.classList.remove('selected')
+      removeClass(isActiveMenu, 'selected')
     }
   }
 }

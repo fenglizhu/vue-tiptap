@@ -47,7 +47,7 @@ export const renderTabDom = (htmlOption: Record<string, any>) : ReturnHTMLElemen
   }
 }
 
-export const renderHTMLTag = (htmlOption: Record<string, any>): HTMLElement => {
+export const renderHTMLTag = (htmlOption: Record<string, any>): ReturnHTMLElement => {
   const div = document.createElement('div');
   div.className = 'editor-menu-tab';
 
@@ -63,7 +63,7 @@ export const renderHTMLTag = (htmlOption: Record<string, any>): HTMLElement => {
   return div
 }
 
-export const renderSTYLETag = (htmlOption: Record<string, any>): HTMLElement => {
+export const renderSTYLETag = (htmlOption: Record<string, any>): ReturnHTMLElement => {
   
   const div = document.createElement('div');
   div.className = `editor-menu-tab ${htmlOption.tabClassName}`;

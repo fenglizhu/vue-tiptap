@@ -1,8 +1,10 @@
+import { querySelector, removeClass } from "../utils/dom"
+
 export const removeTabClass = (target?: HTMLElement) => {
-  const childrenElement = document.querySelector('#zero-editor-menu')?.children || []
+  const childrenElement = querySelector('#zero-editor-menu').children || []
   for (let i = 0; i < childrenElement.length; i++) {
     if((target && childrenElement[i] !== target) || !target) {
-      childrenElement[i].classList.remove('display-tab')
+      removeClass(childrenElement[i], 'display-tab')
     }
   }
 }
