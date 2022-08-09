@@ -3,7 +3,7 @@ export interface CoustomOptions {
   toolTips?: string
 }
 
-type SN = number | string
+export type SN = number | string
 
 export interface MenuOptions {
   editor?: any;
@@ -24,3 +24,5 @@ export type HTMLElementEvent<T extends HTMLElement> = Event & {
   target: T
   currentTarget: T
 }
+
+export type ReturnHTMLElement = HTMLElement | string | undefined

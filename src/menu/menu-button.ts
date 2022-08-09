@@ -1,4 +1,4 @@
-import { HTMLElementEvent, MenuOptions } from "../types";
+import { HTMLElementEvent, MenuOptions, SN } from "../types";
 import { renderElement, renderTabDom } from "./render-dom";
 import { removeTabClass } from "./tab-operation";
 import { ZeroEditor } from "../core/ZeroEditor";
@@ -14,8 +14,6 @@ interface DOM {
   type: string, 
   props: Record<string, any>
 }
-
-type HTMLElement_String = HTMLElement | string | undefined
 
 export class MenuButton{
   dropdownShow: boolean;
@@ -93,27 +91,43 @@ export class MenuButton{
     const dataNeType:string = this.options.dataNeType;
     const menuKey:string = this.options.menuType || this.options.dataNeType;
     const menuBarOption: MenuOptions = zeroEditor.menusBar.menuElementMap[menuKey]?.options;
-    
-    if(menuBarOption.activeIsObject) {
-      // console.log(dataNeType);
-      // setActiveRules
-      if(menuBarOption.dropdown && menuBarOption.setActiveRules) {
-        const dropdown = menuBarOption.dropdown;
-        const one = dropdown.find((item: number | string) => {
-          // console.log(item);
-          const params = menuBarOption.setActiveRules(item)
-          return zeroEditor.editor.isActive(...params)
-        })
 
-        console.log(dataNeType, one);
-        
-        this.activeMenu(dataNeType, !!one);
+    if(menuBarOption.activeIsObject && menuBarOption.dropdown && menuBarOption.setActiveRules) {
+
+      const dropdown = menuBarOption.dropdown;
+      let one: SN = '';
+      for (let i = 0; i < dropdown.length; i++) {
+        const item = dropdown[i]
+        const params = menuBarOption.setActiveRules(item);
+        if(zeroEditor.editor.isActive(...params)) {
+          one = item
+          break
+        }
       }
-      
+
+      one && this.setTabPaneActive(dataNeType, one)
+
+      this.activeMenu(dataNeType, !!one);
       return
     }
 
     this.activeMenu(dataNeType, zeroEditor.editor.isActive(dataNeType))
+  }
+  /**
+   * 激活菜单下拉框样式
+   */
+  setTabPaneActive(dataNeType: string, one: SN) {
+    const isActiveMenu: HTMLElement = document.querySelector(`.editor-menu-item[data-ne-type="${dataNeType}"]`) as HTMLElement;
+
+    const allTab = isActiveMenu.querySelectorAll('.editor-menu-tab-item');
+    allTab.forEach(element => {
+      element.classList.remove('selected')
+    });
+
+    const isActivepane = isActiveMenu.querySelector(`.editor-menu-tab-item[data-attr="${one}"]`)
+    isActivepane && isActivepane.classList.add('selected')
+
+    // TODO:没有取消上一次的
   }
 
   /**

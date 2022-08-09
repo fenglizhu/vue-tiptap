@@ -96,9 +96,9 @@ export default class LineHeight {
       dataNeType: 'lineHeight',
       activeIsObject: true,
       src: 'src/assets/images/line-height.svg',
-      setActiveRules: (lineheight: string) => {
+      setActiveRules: (lineHeight: string) => {
         return [
-          { lineheight }
+          { lineHeight }
         ]
       },
       htmlOption: {

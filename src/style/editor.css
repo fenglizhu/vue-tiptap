@@ -70,6 +70,7 @@
 
 
 .editor-menu-tab-color .editor-menu-tab-item{
+  position: relative;
   width: 18px;
   height: 18px;
   padding: 0;
@@ -77,6 +78,21 @@
   border-radius: 2px;
   border: 1px solid #f4f4f5;
 }
+
+.editor-menu-tab .editor-menu-tab-item.selected::after{
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: url(src/assets/images/check-line.svg) no-repeat;
+  background-size: 100%;
+  transform: translate(0%, -50%);
+    
+}
+
 .editor-menu-tab-color .editor-menu-tab-item:hover{
   border: 1px solid #000;
 }

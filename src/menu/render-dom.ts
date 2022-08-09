@@ -1,4 +1,5 @@
 import { HTML_TYPE } from "../constant";
+import { ReturnHTMLElement } from "../types";
 
 export const renderElement = ({ type, props = {} }: any, container: { appendChild: (arg0: any) => void; }): void => {
   const isTextElement = !type;
@@ -33,9 +34,8 @@ export const renderElement = ({ type, props = {} }: any, container: { appendChil
   return element
 };
 
-type HTMLElement_String = HTMLElement | string | undefined
 
-export const renderTabDom = (htmlOption: Record<string, any>) : HTMLElement_String => {
+export const renderTabDom = (htmlOption: Record<string, any>) : ReturnHTMLElement => {
   if(!htmlOption) {
     return ''
   }
