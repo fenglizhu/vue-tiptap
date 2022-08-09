@@ -1,5 +1,5 @@
 import{ Color as TiptapColor }from '@tiptap/extension-color'
-import { HTML_TYPE, STYLE_NAME } from '../constant';
+import { HTML_TYPE, MENU_ATTR_NAME, STYLE_NAME, TAB_COLOR_CLASS_NAME } from '../constant';
 import { CoustomOptions, MenuOptions, HTMLElementEvent } from '../types'
 import { Colors } from "../types/color";
 
@@ -36,11 +36,11 @@ export default class Color {
         type: HTML_TYPE.STYLE,
         styleName: STYLE_NAME.BACKGROUND_COLOR,
         tagAndText: colors,
-        tabClassName: 'editor-menu-tab-color'
+        tabClassName: TAB_COLOR_CLASS_NAME
       },
       toggleCommand: function (pointerEvent: HTMLElementEvent<HTMLElement>) {
         const element:Element = pointerEvent.target;
-        const color = element.getAttribute('data-attr')
+        const color = element.getAttribute(MENU_ATTR_NAME)
         this.editor.commands.setColor(color);
       }
     }

@@ -1,8 +1,9 @@
 import { HTMLElementEvent, MenuOptions, SN } from "../types";
-import { renderElement, renderTabDom } from "../utils/render-dom";
+import { renderElement, renderTabElement } from "../utils/render-dom";
 import { removeTabClass } from "./tab-operation";
 import { ZeroEditor } from "../core/ZeroEditor";
 import { addClass, querySelector, removeClass } from "../utils/dom";
+import { MENU_ATTR_NAME, TAB_ITEM_CLASS_NAME } from "../constant";
 
 interface Menuoption {
   [x: string]: any;
@@ -74,7 +75,7 @@ export class MenuButton{
     
     this.element = renderElement(elementMap, querySelector('#zero-editor-menu'));
     if(dropdown && htmlOption) {
-      const tapPane = renderTabDom(htmlOption) as Node
+      const tapPane = renderTabElement(htmlOption) as Node
       this.element!.appendChild(tapPane)
     }
   }
@@ -121,7 +122,7 @@ export class MenuButton{
 
     // 添加新的激活项
     if(one) {
-      const isActivepane = querySelector(`.editor-menu-tab-item[data-attr="${one}"]`, isActiveMenu);
+      const isActivepane = querySelector(`.${TAB_ITEM_CLASS_NAME}[${MENU_ATTR_NAME}="${one}"]`, isActiveMenu);
       addClass(isActivepane, 'selected');
     }
   }

@@ -1,6 +1,6 @@
 import { CoustomOptions, MenuOptions, HTMLElementEvent } from '../types'
 import{ TextAlign as TiptapTextAlign }from '@tiptap/extension-text-align'
-import { HTML_TYPE } from '../constant';
+import { HTML_TYPE, MENU_ATTR_NAME } from '../constant';
 
 interface TextAlignOptions extends MenuOptions {
   types?: string[],
@@ -60,7 +60,7 @@ export default class TextAlign {
         const element: Element = pointerEvent.target;
         console.log(element);
         
-        const align: string | null = element.getAttribute('data-attr')
+        const align: string | null = element.getAttribute(MENU_ATTR_NAME)
         this.editor.commands.setTextAlign(align);
       }
     }

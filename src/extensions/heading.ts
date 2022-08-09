@@ -1,5 +1,5 @@
 import{ Heading as TiptapHeading }from '@tiptap/extension-heading'
-import { HTML_TYPE } from '../constant'
+import { HTML_TYPE, MENU_ATTR_NAME } from '../constant'
 import { CoustomOptions, MenuOptions, HTMLElementEvent } from '../types'
 
 export type Level = 1 | 2 | 3 | 4 | 5 | 6
@@ -45,7 +45,7 @@ export default class Heading {
       },
       toggleCommand: function (pointerEvent: HTMLElementEvent<HTMLElement>) {
         const element: Element = pointerEvent.target;
-        const attr: string | null = element.getAttribute('data-attr')
+        const attr: string | null = element.getAttribute(MENU_ATTR_NAME)
         const level: number = Number(attr);
         this.editor.commands.toggleHeading({ level });
       }

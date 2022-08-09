@@ -1,6 +1,7 @@
 import { Editor } from '@tiptap/core'
 import { EditorOptions } from '@tiptap/core/src/types'
 import MenusBar from "../menu/menus-bar";
+import { createElement } from '../utils/dom';
 
 export type EditorType =
   | Editor
@@ -132,7 +133,7 @@ export class ZeroEditor {
    * createEditorParentElement
    */
   public createEditorParentElement() {
-    const patentEle: Element = document.createElement('div');
+    const patentEle: HTMLElement = createElement('div')
     patentEle.className = this.elementParentOption.class
     
     const parent: HTMLElement = this.options.element?.parentElement as HTMLElement
@@ -146,7 +147,7 @@ export class ZeroEditor {
    * 
    */
   public createMenuEle() {
-    const menuEle: Element = document.createElement('div');
+    const menuEle: HTMLElement = createElement('div');
     menuEle.id = this.menuElementOption.id;
     menuEle.className = this.menuElementOption.class;
     return menuEle

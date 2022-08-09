@@ -1,11 +1,12 @@
-import { HTML_TYPE } from "../constant";
+import { HTML_TYPE, MENU_ATTR_NAME, TAB_CLASS_NAME, TAB_ITEM_CLASS_NAME } from "../constant";
 import { ReturnHTMLElement } from "../types";
+import { createElement, setAttribute, setClassName, setStyleProperty } from "./dom";
 
 export const renderElement = ({ type, props = {} }: any, container: { appendChild: (arg0: any) => void; }): void => {
   const isTextElement = !type;
   const element = isTextElement
     ? document.createTextNode('')
-    : document.createElement(type);
+    : document.createElement(type)
   element.innerText = props.nodeValue;
   
   const isListener = (p: string) => p.startsWith('on');
@@ -17,7 +18,7 @@ export const renderElement = ({ type, props = {} }: any, container: { appendChil
     if (isAttribute(p)) element[p] = props[p];
     if(isSetData(p)) {
       for (const key in props[p]) {
-        element.setAttribute(key, props[p][key])
+        setAttribute(element, key, props[p][key]);
       }
     }
     if (!isTextElement && isListener(p))
@@ -35,47 +36,50 @@ export const renderElement = ({ type, props = {} }: any, container: { appendChil
 };
 
 
-export const renderTabDom = (htmlOption: Record<string, any>) : ReturnHTMLElement => {
+export const renderTabElement = (htmlOption: Record<string, any>) : ReturnHTMLElement => {
   if(!htmlOption) {
     return ''
   }
   if (htmlOption.type === HTML_TYPE.HTML) {
-    return renderHTMLTag(htmlOption);
+    return renderHTMLPane(htmlOption);
   }  
   else if (htmlOption.type === HTML_TYPE.STYLE) {
-    return renderSTYLETag(htmlOption);
+    return renderSTYLEPane(htmlOption);
   }
 }
 
-export const renderHTMLTag = (htmlOption: Record<string, any>): ReturnHTMLElement => {
-  const div = document.createElement('div');
-  div.className = 'editor-menu-tab';
+export const renderHTMLPane = (htmlOption: Record<string, any>): ReturnHTMLElement => {
+  const tabPane: HTMLElement = createElement('div');
+  setClassName(tabPane, TAB_CLASS_NAME);
 
   htmlOption.tagAndText.forEach((item: Record<string, any>) => {
-    const tag = document.createElement(item.tag);
-    tag.className = 'editor-menu-tab-item'
-    tag.innerText = item.text
-    tag.setAttribute('data-attr', item.dataAttr);
 
-    div.appendChild(tag);
+    const tabItme: HTMLElement = createElement(item.tag);
+
+    setClassName(tabItme, TAB_ITEM_CLASS_NAME);
+    setAttribute(tabItme, MENU_ATTR_NAME, item.dataAttr);
+    tabItme.innerText = item.text;
+
+    tabPane.appendChild(tabItme);
   });
 
-  return div
+  return tabPane
 }
 
-export const renderSTYLETag = (htmlOption: Record<string, any>): ReturnHTMLElement => {
-  
-  const div = document.createElement('div');
-  div.className = `editor-menu-tab ${htmlOption.tabClassName}`;
+export const renderSTYLEPane = (htmlOption: Record<string, any>): ReturnHTMLElement => {
+  const tabPane: HTMLElement = createElement('div');
+  setClassName(tabPane, `${TAB_CLASS_NAME} ${htmlOption.tabClassName}`);
 
   htmlOption.tagAndText.forEach((item: string) => {
-    const tag = document.createElement('div');
-    tag.className = 'editor-menu-tab-item'
-    tag.style.setProperty(htmlOption.styleName, item)
-    tag.setAttribute('data-attr', item);
-    div.appendChild(tag);
+    const tabItme: HTMLElement = createElement('div');
+
+    setClassName(tabItme, TAB_ITEM_CLASS_NAME);
+    setStyleProperty(tabItme, htmlOption.styleName, item);
+    setAttribute(tabItme, MENU_ATTR_NAME, item)
+
+    tabPane.appendChild(tabItme);
   });
 
-  return div
+  return tabPane
 }
 
