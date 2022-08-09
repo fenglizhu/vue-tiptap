@@ -79,7 +79,7 @@
   border: 1px solid #f4f4f5;
 }
 
-.editor-menu-tab .editor-menu-tab-item.selected::after{
+.editor-menu-tab .editor-menu-tab-item.actived::after{
   content: '';
   position: absolute;
   left: 2px;

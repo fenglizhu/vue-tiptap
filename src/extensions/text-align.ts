@@ -58,8 +58,6 @@ export default class TextAlign {
       src: 'src/assets/images/align-left.svg',
       toggleCommand: function (pointerEvent: HTMLElementEvent<HTMLElement>) {
         const element: Element = pointerEvent.target;
-        console.log(element);
-        
         const align: string | null = element.getAttribute(MENU_ATTR_NAME)
         this.editor.commands.setTextAlign(align);
       }
