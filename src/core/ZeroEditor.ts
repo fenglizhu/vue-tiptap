@@ -1,5 +1,5 @@
 import { Editor } from '@tiptap/core'
-import { EditorOptions } from '@tiptap/core/src/types'
+import { EditorOptions } from '@tiptap/core'
 import MenusBar from "../menu/menus-bar";
 import { createElement } from '../utils/dom';
 
